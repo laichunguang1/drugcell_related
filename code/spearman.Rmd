@@ -134,7 +134,7 @@ mtext(paste("Spearman rho:", text1), side=1)
 ## draw spearman for prediction all
 
 ```{r, error = TRUE}
-
+# 
 index="all"
 x=read.csv2(paste0("E:/google\ drive/Thesis/data/drugcell_related/data/sample/drugcell_all.txt"),header=FALSE,sep="\t")
 x=as.numeric(x[[3]])
