@@ -35,7 +35,7 @@ text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
 ```
 
-![](sppearman_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+![](spearman_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 
 ```r
 # Pearson correlation
@@ -72,7 +72,7 @@ text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
 ```
 
-![](sppearman_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](spearman_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
 ```r
 # Pearson correlation
@@ -109,7 +109,7 @@ text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
 ```
 
-![](sppearman_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](spearman_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 ```r
 # Pearson correlation
@@ -146,7 +146,7 @@ text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
 ```
 
-![](sppearman_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](spearman_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 ```r
 # Pearson correlation
@@ -183,7 +183,7 @@ text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
 ```
 
-![](sppearman_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](spearman_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 ```r
 # Pearson correlation
@@ -223,7 +223,7 @@ text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
 ```
 
-![](sppearman_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](spearman_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 ```r
 # Pearson correlation
@@ -261,7 +261,7 @@ text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
 ```
 
-![](sppearman_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](spearman_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 ```r
 # Pearson correlation
