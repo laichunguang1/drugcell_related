@@ -6,12 +6,11 @@ output:
   html_document:
     keep_md: true
 ---
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 ## draw spearman for prediction 1/5
 
-```{r, error = TRUE}
+
+```r
 # https://r-coder.com/correlation-plot-r/
 # Data generation
 set.seed(1)
@@ -34,7 +33,11 @@ abline(lm(y ~ x), col = "red", lwd = 3)
 # text(paste("Correlation:", text1), x=85, y=25)
 text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
+```
 
+![](sppearman_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+
+```r
 # Pearson correlation
 
 
@@ -43,7 +46,8 @@ mtext(paste("Spearman rho:", text1), side=1)
 ```
 ## draw spearman for prediction 2/5
 
-```{r, error = TRUE}
+
+```r
 # https://r-coder.com/correlation-plot-r/
 # Data generation
 set.seed(1)
@@ -66,7 +70,11 @@ abline(lm(y ~ x), col = "red", lwd = 3)
 # text(paste("Correlation:", text1), x=85, y=25)
 text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
+```
 
+![](sppearman_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+
+```r
 # Pearson correlation
 
 
@@ -75,7 +83,8 @@ mtext(paste("Spearman rho:", text1), side=1)
 ```
 ## draw spearman for prediction 3/5
 
-```{r, error = TRUE}
+
+```r
 # https://r-coder.com/correlation-plot-r/
 # Data generation
 set.seed(1)
@@ -98,7 +107,11 @@ abline(lm(y ~ x), col = "red", lwd = 3)
 # text(paste("Correlation:", text1), x=85, y=25)
 text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
+```
 
+![](sppearman_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+
+```r
 # Pearson correlation
 
 
@@ -107,7 +120,8 @@ mtext(paste("Spearman rho:", text1), side=1)
 ```
 ## draw spearman for prediction 4/5
 
-```{r, error = TRUE}
+
+```r
 # https://r-coder.com/correlation-plot-r/
 # Data generation
 set.seed(1)
@@ -130,7 +144,11 @@ abline(lm(y ~ x), col = "red", lwd = 3)
 # text(paste("Correlation:", text1), x=85, y=25)
 text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
+```
 
+![](sppearman_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
+```r
 # Pearson correlation
 
 
@@ -139,7 +157,8 @@ mtext(paste("Spearman rho:", text1), side=1)
 ```
 ## draw spearman for prediction 5/5
 
-```{r, error = TRUE}
+
+```r
 # https://r-coder.com/correlation-plot-r/
 # Data generation
 set.seed(1)
@@ -162,7 +181,11 @@ abline(lm(y ~ x), col = "red", lwd = 3)
 # text(paste("Correlation:", text1), x=85, y=25)
 text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
+```
 
+![](sppearman_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+
+```r
 # Pearson correlation
 
 
@@ -173,7 +196,8 @@ mtext(paste("Spearman rho:", text1), side=1)
 
 ## draw spearman for prediction 550_5
 
-```{r, error = TRUE}
+
+```r
 # https://r-coder.com/correlation-plot-r/
 # Data generation
 set.seed(1)
@@ -197,7 +221,11 @@ abline(lm(y ~ x), col = "red", lwd = 3)
 # text(paste("Correlation:", text1), x=85, y=25)
 text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
+```
 
+![](sppearman_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+
+```r
 # Pearson correlation
 
 
@@ -207,7 +235,8 @@ mtext(paste("Spearman rho:", text1), side=1)
 
 ## draw spearman for prediction all
 
-```{r, error = TRUE}
+
+```r
 # https://r-coder.com/correlation-plot-r/
 # Data generation
 set.seed(1)
@@ -230,7 +259,11 @@ abline(lm(y ~ x), col = "red", lwd = 3)
 # text(paste("Correlation:", text1), x=85, y=25)
 text1=round(cor(x, y, method = "spearman"),2)
 mtext(paste("Spearman rho:", text1), side=1)
+```
 
+![](sppearman_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+
+```r
 # Pearson correlation
 
 
