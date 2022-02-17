@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, error = TRUE}
 # https://r-coder.com/correlation-plot-r/
-set.seed(1)
+# set.seed(1)
 index="1"
 x=read.csv2(paste0("E:/google\ drive/Thesis/data/drugcell_related/data/sample/split52/drugcell_test",index,".txt"),header=FALSE,sep="\t")
 x=as.numeric(x[[3]])
