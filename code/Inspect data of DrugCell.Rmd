@@ -1,0 +1,179 @@
+---
+title: "Inspect data of DrugCell"
+author: "Chunguang Lai"
+date: "2022-02-18"
+output:
+  html_document:
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "../")
+
+```
+
+## enviroment setup
+```{r, error = TRUE}
+requiredPackages = c('here','ggplot2')
+for(p in requiredPackages){
+  if(!require(p,character.only = TRUE)) install.packages(p)
+  library(p,character.only = TRUE)
+}
+```
+
+## inspect drug infomation
+
+```{r, error = TRUE}
+
+compoundname=read.csv2(here("data","compound_names.txt"),header=TRUE,sep="\t")
+
+
+# CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
+
+drugcell_all=read.csv2(here("data","drugcell_all.txt"),header=FALSE,sep="\t")
+
+# table(grepl("CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO",drugcell_all[,2],fixed=TRUE))
+```
+
+
+
+
+## total 997 pairs for Paclitaxel, 2 different structures
+```{r, error = TRUE}
+compoundname[which(grepl("Paclitaxel",compoundname[,3],ignore.case = TRUE)),]
+# first pacilitaxel row 265, has 239 pairs/cell lines which match the number of Figure 3F
+drugcell_pacilitaxel1=drugcell_all[drugcell_all[,2]=="CC1=C2[C@H](C(=O)[C@@]3([C@H](C[C@@H]4[C@]([C@H]3[C@@H]([C@@](C2(C)C)(C[C@@H]1OC(=O)[C@@H]([C@H](C5=CC=CC=C5)NC(=O)C6=CC=CC=C6)O)O)OC(=O)C7=CC=CC=C7)(CO4)OC(=O)C)O)C)OC(=O)C",]
+table(drugcell_pacilitaxel1[,2])
+length(table(drugcell_pacilitaxel1[,1]))
+
+
+# second pacilitaxel row 359, has 758 pairs/cell liens, I don't know what it is
+
+drugcell_pacilitaxel2=drugcell_all[drugcell_all[,2]=="CC1=C2[C@H](C(=O)[C@@]3([C@H](C[C@@H]4[C@](C3[C@@H]([C@@](C2(C)C)(C[C@@H]1OC(=O)[C@@H]([C@H](C5=CC=CC=C5)NC(=O)C6=CC=CC=C6)O)O)OC(=O)C7=CC=CC=C7)(CO4)OC(=O)C)O)C)OC(=O)C",]
+table(drugcell_pacilitaxel2[,2])
+length(table(drugcell_pacilitaxel2[,1]))
+# 8948 of total selumetinib
+table(grepl("CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO",drugcell_all[,2],fixed=TRUE))
+
+```
+
+
+## one mono plus several combinations for selumetinib, mono is row 355
+```{r, error = TRUE}
+
+compoundname[which(grepl("selumetinib",compoundname[,3],ignore.case = TRUE)),]
+# Selumetinib row 355, has 788 pairs, 769 cell lines, dosen't match Figure 3B's n=382
+# CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
+
+
+length(which(drugcell_all[,2]=="CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO"))
+
+drugcell_selumetinib=drugcell_all[(which(drugcell_all[,2]=="CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO")),]
+length(table(drugcell_selumetinib[,1]))
+
+```
+
+## one mono, and several combinations for selumetinib, mono is row 355
+```{r, error = TRUE}
+
+compoundname[which(grepl("JQ1",compoundname[,3],ignore.case = TRUE)),]
+
+# JQ1 row 661, has 849 pairs, 808 cell lines, dosen't match Figure 3D's n=860
+# CC1=C(SC2=C1C(=N[C@H](C3=NN=C(N32)C)CC(=O)OC(C)(C)C)C4=CC=C(C=C4)Cl)C
+
+
+length(which(drugcell_all[,2]=="CC1=C(SC2=C1C(=N[C@H](C3=NN=C(N32)C)CC(=O)OC(C)(C)C)C4=CC=C(C=C4)Cl)C"))
+
+drugcell_JQ1=drugcell_all[(which(drugcell_all[,2]=="CC1=C(SC2=C1C(=N[C@H](C3=NN=C(N32)C)CC(=O)OC(C)(C)C)C4=CC=C(C=C4)Cl)C")),]
+drugcell_JQ2=drugcell_all[(grepl("CC1=C(SC2=C1C(=N[C@H](C3=NN=C(N32)C)CC(=O)OC(C)(C)C)C4=CC=C(C=C4)Cl)C",drugcell_all[,2])),]
+
+
+dim(drugcell_JQ1)
+length(table(drugcell_JQ1[,1]))
+
+
+# 5279 pairs, 839 cell lines involved selumetinib in total, still doesn't match 860
+JQ1="CC1=C\\(SC2=C1C\\(=N\\[C@H\\]\\(C3=NN=C\\(N32\\)C\\)CC\\(=O\\)OC\\(C\\)\\(C\\)C\\)C4=CC=C\\(C=C4\\)Cl\\)C"
+table(grepl(JQ1,drugcell_all[,2]))
+drugcell_JQ1_all=drugcell_all[(grepl(JQ1,drugcell_all[,2])),]
+dim(drugcell_JQ1_all)
+length(table(drugcell_JQ1_all[,1]))
+
+```
+
+
+## plot Fig S1 E, Histogram of the number of mutations per cell line used for model training, matched figure S1E
+```{r, error=TRUE}
+
+cellname=read.csv2(here("data","cell2ind.txt"),header=FALSE,sep="\t")
+
+cellmuation=read.csv2(here("data","cell2mutation.txt"),header=FALSE,sep=",")
+genename=read.csv2(here("data","gene2ind.txt"),header=FALSE,sep="\t")
+distribution_cellmutation=as.data.frame(apply(cellmuation,1,FUN=sum))
+distribution_drugmutation=as.data.frame(apply(cellmuation,2,FUN=sum))
+
+which(distribution_drugmutation[,1]=="229")
+
+distribution_drugmutation[288,]
+
+distribution_cellmutation1=as.data.frame(t(rbind(c(1:length(distribution_cellmutation[,1])),(distribution_cellmutation[,1]))))
+
+rbind((distribution_cellmutation[2,]),c(1:length(distribution_cellmutation[2,])))
+
+library(ggplot2)
+
+ggplot(data.frame(distribution_cellmutation1), aes(x=V2))+xlab("# mutation")+ylab("# cell lines")+ scale_x_continuous(limits=c(1,1335),trans='log10')+
+  geom_histogram(color="darkblue", fill="lightblue",binwidth=0.1
+  )
+
+
+```
+
+
+## find BRAF mutations, but 175 doesn't match with figure 3A's n=229
+
+```{r, error = TRUE}
+
+
+
+# 288
+genename[grepl("BRAF",genename[,2])==TRUE,]
+
+# why 175
+table(data.frame(cellmuation[,288]))
+
+
+
+```
+
+
+
+## finding EGFR,BRAF,LKB1 mutations, number still doesn't match
+
+```{r, error = TRUE}
+# 288
+
+# 802
+genename[grepl("EGFR",genename[,2])==TRUE,]
+# 1513
+genename[grepl("LKB1",genename[,2])==TRUE,]
+
+#1521
+genename[grepl("KRAS",genename[,2])==TRUE,]
+
+
+table(data.frame(cellmuation[,802]))
+table(data.frame(cellmuation[,1513]))
+# why 175
+table(data.frame(cellmuation[,288]))
+
+table(data.frame(cellmuation[,1521]))
+
+table(data.frame(cellmuation[,288])+data.frame(cellmuation[,802])+data.frame(cellmuation[,1513]))
+
+
+
+cellmuation2=read.csv2(here("data","cell2mutation_fixed.txt"),header=FALSE,sep=",")
+
+```
