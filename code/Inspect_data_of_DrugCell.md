@@ -5,12 +5,7 @@ date: "2022-02-18"
 output:
   html_document:
     toc: true
-<<<<<<< HEAD
     toc_float: true
-=======
-    toc_float: 
-      collapsed: true
->>>>>>> f4fc709ff4fe6410ff20d5b7b6f53d026cd32479
     keep_md: true
 ---
 
@@ -368,11 +363,8 @@ table(rowSums(data.frame(cellmutation[,c(288,802,1513)])))
 ## [1] 311
 ```
 
-<<<<<<< HEAD
 # 5. Inspect cell2mutation_fixed.txt, and find that this dataset has 1224 cell ines, which is lack first cell line compared with 1225 of cell2mutation.txt. But still get 311 as last section
-=======
-## 5. Inspect cell2mutation_fixed.txt, and find that this dataset has 1224 cell ines, which is lack first cell line compared with 1225 of cell2mutation.txt. But still get 311 as last section
->>>>>>> f4fc709ff4fe6410ff20d5b7b6f53d026cd32479
+
 
 ```r
 cellmutation2=read.csv2(here("data","cell2mutation_fixed.txt"),header=FALSE,sep=",")
