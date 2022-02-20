@@ -4,6 +4,8 @@ author: "Chunguang Lai"
 date: "2022-02-18"
 output:
   html_document:
+    toc: true
+    toc_float: true
     keep_md: true
 ---
 
@@ -88,7 +90,7 @@ ggplot(data.frame(distribution_cellmutation1), aes(x=V2))+xlab("# mutation")+yla
 ## Warning: Removed 2 rows containing missing values (geom_bar).
 ```
 
-![](Inspect-data-of-DrugCell_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](Inspect_data_of_DrugCell_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 # 3. Check number of cell lines tested with specific drugs
 
@@ -146,8 +148,52 @@ table(grepl("CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO",drugcell_all
 ```
 
 ```r
-# compoundname[which(grepl("selumetinib",compoundname[,3],ignore.case = TRUE)),]
+compoundname[which(grepl("selumetinib",compoundname[,3],ignore.case = TRUE)),]
+```
 
+```
+##     number
+## 89      88
+## 148    147
+## 354    353
+## 355    354
+## 382    381
+## 391    390
+## 527    526
+## 566    565
+## 578    577
+## 590    589
+## 605    604
+## 626    625
+##                                                                                                                                                                                            SMILE
+## 89                                                                   CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.CS(=O)(=O)N1CCN(CC1)CC2=CC3=C(S2)C(=NC(=N3)C4=C5C=NNC5=CC=C4)N6CCOCC6
+## 148                                                                         CC(C)N1CCC(CC1)NC2=NC(=NC3=CC(=C(C=C32)OC)OCCCN4CCCC4)C5CCCCC5.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
+## 354                                                                      CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.C1CC(C1)(C2=CC=C(C=C2)C3=C(C=C4C(=N3)C=CN5C4=NNC5=O)C6=CC=CC=C6)N
+## 355                                                                                                                                        CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
+## 382                                                                CCCS(=O)(=O)NC1=C(C(=C(C=C1)F)C(=O)C2=CNC3=NC=C(C=C23)C4=CC=C(C=C4)Cl)F.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
+## 391 CC1(CCC(=C(C1)CN2CCN(CC2)C3=CC=C(C=C3)C(=O)NS(=O)(=O)C4=CC(=C(C=C4)N[C@H](CCN5CCOCC5)CSC6=CC=CC=C6)S(=O)(=O)C(F)(F)F)C7=CC=C(C=C7)Cl)C.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
+## 527                                                                                          CC1=C(C(CCC1)(C)C)/C=C/C(=C/C=C/C(=C/CO)/C)/C.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
+## 566                                                                  CC1=C(SC2=C1C(=N[C@H](C3=NN=C(N32)C)CC(=O)OC(C)(C)C)C4=CC=C(C=C4)Cl)C.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
+## 578                                                                                             CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.COC1=CC(=CC(=C1OC)OC)/C=C/C(=O)N2CCC=CC2=O
+## 590                                            CC(C)N(CCCNC(=O)NC1=CC=C(C=C1)C(C)(C)C)C[C@@H]2[C@H]([C@H]([C@@H](O2)N3C=CC4=C3N=CN=C4N)O)O.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
+## 605                                                                                                       CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.C1=CC=C(C=C1)NC(=O)CCCCCCC(=O)NO
+## 626                                                                                             CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.C1[C@@H]([C@H](O[C@H]1N2C=NC(=NC2=O)N)CO)O
+##                             Name
+## 89        Selumetinib + GDC-0941
+## 148        UNC0638 + Selumetinib
+## 354        Selumetinib + MK-2206
+## 355                  Selumetinib
+## 382    Vemurafenib + Selumetinib
+## 391     Navitoclax + Selumetinib
+## 527        retinol + Selumetinib
+## 566            JQ1 + Selumetinib
+## 578 Selumetinib + Piperlongumine
+## 590      EPZ004777 + Selumetinib
+## 605     Selumetinib + Vorinostat
+## 626     Selumetinib + Decitabine
+```
+
+```r
 # Selumetinib at row 355, has 788 pairs, 769 cell lines, dosen't match Figure 3B's n=382
 
 
@@ -317,7 +363,7 @@ table(rowSums(data.frame(cellmutation[,c(288,802,1513)])))
 ## [1] 311
 ```
 
-## 5. Inspect cell2mutation_fixed.txt, and find that this dataset has 1224 cell ines, which is lack first cell line compared with 1225 of cell2mutation.txt. But still get 311 as last section
+# 5. Inspect cell2mutation_fixed.txt, and find that this dataset has 1224 cell ines, which is lack first cell line compared with 1225 of cell2mutation.txt. But still get 311 as last section
 
 ```r
 cellmutation2=read.csv2(here("data","cell2mutation_fixed.txt"),header=FALSE,sep=",")
