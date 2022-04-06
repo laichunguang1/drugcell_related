@@ -1,0 +1,439 @@
+cell_line,n_replicates,cell_line_SSMD,culture_type,culture_medium,aliases,primary_tissue,secondary_tissue,tertiary_tissue,cas9_activity
+SIHA_CERVIX,2,-1.5782744629705132,Adherent,EMEM; 10% FBS,SiHa,cervix,,,9.5
+CAKI1_KIDNEY,2,-1.3951941326110031,Adherent,McCoy's 5A; 10% FBS,Caki-1,kidney,,,49.5
+NCIH1648_LUNG,4,-1.490472780752348,Adherent,RPMI; 10% FBS,NCI-H1648,lung,lung_NSC,lung_adenocarcinoma,12.1
+TCCSUP_URINARY_TRACT,2,-1.5045428841794397,Adherent,EMEM; 10% FBS; 1mM NEAA; 1mM Sodium Pyruvate,TCCSUP,urinary_tract,,,19.1
+JHOS2_OVARY,1,-1.1749783373798282,Adherent,DMEM/F12 (1:1);10 % FBS;,JHOS-2,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,16.2
+PANC0203_PANCREAS,4,-1.3899191650715117,Adherent,"RPMI-1640,10%FBS, 1mM sodium pyruvate",,pancreas,,,11.1
+U178_CENTRAL_NERVOUS_SYSTEM,2,-0.7211214725956688,Adherent,DMEM; 10% FBS,U178,central_nervous_system,glioma,glioblastoma,51.7
+HEC6_ENDOMETRIUM,2,-1.4134719085965988,Adherent,EMEM; 15% FBS,HEC6,uterus,uterus_endometrium,,38.1
+COLO679_SKIN,2,-1.4173557645527812,Adherent,RPMI;10% FBS;,COLO-679,skin,melanoma,,25.9
+LN319_CENTRAL_NERVOUS_SYSTEM,2,-1.422264408590758,Adherent,DMEM: 90.0%,LN-319,central_nervous_system,glioma,astrocytoma,31.2
+TEN_ENDOMETRIUM,2,-1.1378798313608651,Adherent,Minimum Essential Media (MEM): 90.0%;10%FBS,TEN,uterus,uterus_endometrium,,18.8
+NCIH2172_LUNG,2,-1.7368357883658785,Adherent,RPMI-1640: 90.0%,NCI-H2172,lung,lung_NSC,,13
+SNU8_OVARY,3,-1.741016388731314,Adherent,RPMI; 10% FBS,SNU8,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,13.1
+NCIH838_LUNG,2,-1.5056829494458823,Adherent,RPMI; 10% FBS,NCI-H838,lung,lung_NSC,lung_adenocarcinoma,15.2
+PSN1_PANCREAS,4,-0.8364805790072762,Adherent,RPMI 1640 + 2mM Glutamine + 10% FBS,PSN1,pancreas,,,21.1
+JHOM1_OVARY,3,-0.8468576944000452,,DMEM:F12 (1:1); 10% FBS; 0.1mM NEAA,JHOM-1,ovary,ovary_adenocarcinoma,ovary_mucinous,36.7
+KMRC1_KIDNEY,3,-1.6468801085271862,Adherent,DMEM;10% FBS;,KMRC1,kidney,,,21.6
+HUPT3_PANCREAS,4,-2.584950269365491,Adherent,MEM; 10% FBS,HUP-T3,pancreas,,,29.8
+KARPAS299_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,3,-1.177145443732853,Suspension,RPMI 1640 + 2mM Glutamine + 20% FBS,,lymphoma,ALCL,,44.5
+SW403_LARGE_INTESTINE,1,-0.6294611712180999,Adherent,Leibovitz's L-15; 10%FBS,SW403,colorectal,,,75.2
+JHH4_LIVER,2,-1.5805101579265497,Adherent,EMEM; 10% FBS,JHH4,liver,,,45.6
+SIMA_AUTONOMIC_GANGLIA,3,-2.1452412942079597,Adherent,RPMI-1640: 10%FBS,,peripheral_nervous_system,neuroblastoma,,41
+JHH5_LIVER,3,-1.5458075667255768,Adherent,William's E Medium: 90.0%,JHH-5,liver,,,25.1
+T24_URINARY_TRACT,2,-1.4165807673046622,Adherent,McCoy 5A: 90.0%,T24,urinary_tract,,,34.8
+HCC202_BREAST,2,-1.1652353724279534,Adherent,RPMI; 10% FBS,HCC202,breast,HER2Amp,,16.8
+HEC1A_ENDOMETRIUM,2,-1.1525144475393898,Adherent,McCoy's 5A; 10% FBS,HEC-1-A,uterus,uterus_endometrium,,8.4
+SNU201_CENTRAL_NERVOUS_SYSTEM,2,-1.0225304187923698,Adherent,RPMI; 10% FBS,SNU-201,central_nervous_system,glioma,glioblastoma,22.7
+HCC15_LUNG,2,-2.4932733235900377,Adherent,RPMI; 10% FBS,HCC15,lung,lung_NSC,lung_squamous,11.9
+SF172_CENTRAL_NERVOUS_SYSTEM,2,-1.374621903772692,Adherent,DMEM; 10% FBS,SF172,central_nervous_system,glioma,glioblastoma,15
+C2BBE1_LARGE_INTESTINE,3,-1.1234221856265931,Adherent,D10+ITS+Glu,C2BBe1,colorectal,,,5.8
+L82_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,3,-0.8802357531176429,Suspension,RPMI + 10% FBS,,lymphoma,T-cell_lymphoma_other,,26
+LS513_LARGE_INTESTINE,2,-1.5781172909975818,Adherent,RPMI 1640 + 10% FBS,LS513,colorectal,,,52.3
+SMZ1_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,3,-1.7868532254310527,Suspension,R10,SMZ-1,lymphoma,,,24
+KYSE510_OESOPHAGUS,2,-1.1090258112167866,Adherent,RPMI; 10% FBS,KYSE-510,esophagus,esophagus_squamous,,6
+SW1463_LARGE_INTESTINE,3,-1.1776986966014942,Adherent,RPMI-1640: 10%FBS,,colorectal,,,21.4
+SKMEL30_SKIN,1,-0.8511836982514064,Adherent,RPMI-1640; 10%FBS,SKMEL30,skin,melanoma,,30.3
+U343_CENTRAL_NERVOUS_SYSTEM,2,-1.5584512346936468,Adherent,DMEM; 10% FBS,U343,central_nervous_system,glioma,glioblastoma,17.8
+REH_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.5829209914366191,Suspension,RPMI; 10% FBS,REH,leukemia,B-cell_ALL,,35
+COV504_OVARY,2,-1.432988921195166,Adherent,DMEM; 10% FBS; 2mM L-glutamine,COV504,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,13
+SLR26_KIDNEY,2,-1.3390204603968665,Adherent,RPMI; 10% FBS,SLR26,kidney,,,16.6
+LNZ308_CENTRAL_NERVOUS_SYSTEM,2,-1.5661433128671478,Adherent,DMEM; 10% FBS,LN-Z308,central_nervous_system,glioma,glioblastoma,10.2
+BICR6_UPPER_AERODIGESTIVE_TRACT,2,-1.1436299550744131,Adherent,DMEM;10% FBS;,BICR6,upper_aerodigestive,upper_aerodigestive_squamous,,10.6
+SLR20_KIDNEY,1,-1.6738802447121486,Adherent,RPMI; 10% FBS,SLR20,kidney,,,12
+HGC27_STOMACH,2,-1.1693860444730484,Adherent,"Minimum Essential Media (MEM): 10%FBS,NEAA( Non-essential Amino Acids): 5.0 ml, L-glutamine: 2.0 mM",HGC27,gastric,,,40.9
+U118MG_CENTRAL_NERVOUS_SYSTEM,2,-1.0161600059706424,Adherent,DMEM; 10% FBS,U-118 MG,central_nervous_system,glioma,astrocytoma,30.9
+TE5_OESOPHAGUS,2,-1.0117496177238858,Adherent,RPMI-1640: 10%FBS,TE5,esophagus,esophagus_squamous,,35.9
+KS1_CENTRAL_NERVOUS_SYSTEM,2,-1.118930920270963,Adherent,Minimum Essential Media (MEM): 90.0%; 2mMGlutamax-1,KS1,central_nervous_system,glioma,astrocytoma,49.6
+P31FUJ_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,3,-2.117991543380815,Suspension,RPMI;10% FBS;,,leukemia,AML,,12.4
+UPCISCC152_UPPER_AERODIGESTIVE_TRACT,2,-1.0826109129977377,,"EMEM; 10% FBS, 2mMGlutamax-1","UPCI:SCC152, SCC152",upper_aerodigestive,upper_aerodigestive_squamous,,8.16
+SCABER_URINARY_TRACT,2,-1.4252023758638968,Adherent,"E10+ L-glutamine: 2.0 mM, NEAA( Non-essential Amino Acids): 0.1 mM, Sodium Pyruvate: 0.1 mM",SCABER,urinary_tract,,,46
+HCC1395_BREAST,3,-0.9783601915300479,Adherent,RPMI; 10% FBS,HCC1395,breast,TNBC,,52.6
+TC106_BONE,2,-1.6356387002625183,Adherent,"RPMI-1640: 90.0%; 10%heat inactive FBS,2mMGlutamax",TC-106,bone,Ewing_sarcoma,,39.8
+CHAGOK1_LUNG,2,-1.4413850551582914,Adherent,RPMI-1640: 90.0%,ChaGo-K-1,lung,lung_NSC,,5.6
+HS683_CENTRAL_NERVOUS_SYSTEM,2,-1.2480825596424232,Adherent,DMEM; 10% FBS,Hs 683,central_nervous_system,glioma,oligodendroglioma,39.3
+OCIAML2_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-2.0647152944402056,Suspension,"MEMalpha, 20% FBS",OCI-AML2,leukemia,AML,,42.1
+U937_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,3,-1.2476338495584298,Suspension,RPMI;10% FBS;,U-937,leukemia,AML,,23.9
+D425_CENTRAL_NERVOUS_SYSTEM,3,-1.3259986369463994,Semi-Adherent,"DMEM; 10% FBS; 2mM L-glutamine, 2mM sodium pyruvate",D425,central_nervous_system,medulloblastoma,med_group_3,21.8
+GSS_STOMACH,2,-1.5109824048460987,Suspension,RPMI-1640; 10%FBS,GSS,gastric,gastric_adenocarcinoma,,12.1
+HSC2_UPPER_AERODIGESTIVE_TRACT,2,-0.9894854486914488,Adherent,EMEM; 10% FBS,HSC-2,upper_aerodigestive,upper_aerodigestive_squamous,,17.1
+MDAMB231_BREAST,2,-2.014465734320636,Adherent,RPMI; 10% FBS,MDA-MB-231,breast,TNBC,,9
+HSC3_UPPER_AERODIGESTIVE_TRACT,2,-0.7519314672955553,Adherent,EMEM; 10% FBS,HSC-3,upper_aerodigestive,upper_aerodigestive_squamous,,20.2
+WM1799_SKIN,2,-0.9926849043612572,Adherent,RPMI-1640: 10%FBS,WM1799,skin,melanoma,,30.8
+NCIH1573_LUNG,2,-0.6742376691900646,Adherent,"RPMI-1640: 95%,5%FBS",NCI-H1573,lung,lung_NSC,lung_adenocarcinoma,48
+H4_CENTRAL_NERVOUS_SYSTEM,2,-2.0751523722143266,Adherent,RPMI-1640: 10%FBS,H4_CENTRAL_NERVOUS_SYSTEM,central_nervous_system,glioma,,27.1
+CAOV3_OVARY,3,-2.0117046398080656,Adherent,DMEM; 10% FBS,Caov-3,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,22.6
+K029AX_SKIN,1,-1.0995726480192365,Adherent,RPMI;10% FBS;,K029AX,skin,melanoma,,55.2
+HLF_LIVER,2,-1.0719745982794686,Adherent,EMEM; 10% FBS,HLF,liver,,,8.16
+SNU410_PANCREAS,3,-1.113201326259951,Adherent,RPMI-1640: 10%FBS,,pancreas,,,18.6
+SF767_CENTRAL_NERVOUS_SYSTEM,2,-1.6864484984472323,Adherent,DMEM; 10% FBS,SF767,cervix,,,8.2
+OE33_OESOPHAGUS,2,-1.042932613152758,Adherent,RPMI; 10% FBS,OE33,esophagus,esophagus_adenocarcinoma,,10.4
+NCIN87_STOMACH,2,-0.6537778051671788,Adherent,RPMI; 10% FBS,NCI-N87,gastric,gastric_adenocarcinoma,,49.2
+HMC18_BREAST,2,-1.6199733985938154,Adherent,RPMI-1640: 10%FBS,HMC18,breast,,,3.4
+SW837_LARGE_INTESTINE,3,-1.6119379663914908,Adherent,RPMI; 10% FBS,SW 837,colorectal,,,9.9
+UMUC3_URINARY_TRACT,2,-1.4354892427633268,Adherent,EMEM; 10% FBS,UMUC3,urinary_tract,,,11.7
+SKOV3_OVARY,3,-0.8266988537069189,Adherent,McCoy's 5A; 10% FBS,SK-OV-3,ovary,ovary_adenocarcinoma,ovary_endometrioid,20.6
+769P_KIDNEY,2,-1.622379643709257,Adherent,RPMI;10% FBS;,769P,kidney,,,16.7
+EFO21_OVARY,3,-1.0652986890887226,Adherent,RPMI; 20% FBS; 0.1mM NEAA; 1mM Sodium Pyruvate,EFO-21,ovary,ovary_adenocarcinoma,ovary_clear_cell,28.2
+KPL1_BREAST,3,-2.414414061545697,Adherent,DMEM;10% FBS;,KPL-1,breast,ERpos,,30.4
+NH6_AUTONOMIC_GANGLIA,2,-0.6055511964235709,Adherent,RPMI-1640: 10%FBS,,peripheral_nervous_system,neuroblastoma,,55
+LU99_LUNG,2,-1.4750175410997353,Adherent,RPMI; 10% FBS,LU99,lung,lung_NSC,lung_large,43
+DANG_PANCREAS,4,-1.354782774672198,Adherent,RPMI-1640: 90.0%,DANG,pancreas,,,11.5
+BC3C_URINARY_TRACT,2,-1.3360085371160986,Adherent,M10,BC3C,urinary_tract,,,4.9
+KMRC20_KIDNEY,2,-1.3763788154108734,Adherent,RPMI; 10% FBS,,kidney,,,15.2
+CORL279_LUNG,2,-1.7288694298369147,Semi-adherent,RPMI;10% FBS; 2mM GLUTAMINE,COR-L279,lung,lung_small,,15.1
+LS1034_LARGE_INTESTINE,3,-1.001654414602086,Adherent,RPMI; 10% FBS,,colorectal,,,15.7
+MPP89_PLEURA,2,-1.005974563364861,Adherent,DMEM: 90.0%,MPP89,mesothelioma,,,44.2
+MIAPACA2_PANCREAS,4,-2.4585038093754386,Adherent,DMEM; 10% FBS,MIA PaCa-2,pancreas,,,11.7
+YKG1_CENTRAL_NERVOUS_SYSTEM,2,-1.3486550147127487,Adherent,DMEM; 10% FBS,YKG1,central_nervous_system,glioma,glioblastoma,21.1
+OCIAML3_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-0.7543647820782284,Suspension,"MEMalpha, 20% FBS",OCI-AML3,leukemia,AML,,48.4
+EN_ENDOMETRIUM,2,-0.5655896945927801,Adherent,RPMI-1640: 10%FBS,EN,uterus,uterus_endometrium,,28
+PEDS015T_SOFT_TISSUE,2,-1.2526614780383163,Adherent,"Ham F-12: 25.0%, DMEM: 75.0%, Penicillin-Streptomycin: 550.0 ug/mL, Human Insulin: 5.0 ug/mL, Y-27632: 5.0 uM, Cholera toxin: 8.6 ng/mL, L-glutamine: 2.0 mM, EGF: 10.0 ng/mL, Hydrocortisone: 0.4 ug/mL, Fungizone: 0.25 ug/mL, Gentamicin: 10.0 ug/mL
+",Peds015T(icat043),soft_tissue,sarcoma_undifferentiated,,61
+MCAS_OVARY,2,-1.1965287350176346,Adherent,EMEM: 85.0% 15%FBS,MCAS,ovary,ovary_adenocarcinoma,ovary_mucinous,9.8
+D458_CENTRAL_NERVOUS_SYSTEM,3,-1.706920484570318,Semi-Adherent,DMEM:F12 (1:1); 15% FBS,D458,central_nervous_system,medulloblastoma,med_group_3,26.4
+KYSE450_OESOPHAGUS,2,-1.79048911927932,Adherent,RPMI:F12(1:1); 10% FBS,KYSE-450,esophagus,esophagus_squamous,,24.7
+WM115_SKIN,2,-0.8847035430277418,Adherent,EMEM: 10% FBS,WM-115,skin,melanoma,,51.7
+RVH421_SKIN,2,-1.0105307211432375,Adherent,RPMI-1640; 10%FBS,RVH421,skin,melanoma,,48.2
+8MGBA_CENTRAL_NERVOUS_SYSTEM,2,-0.8587108523782181,Adherent,EMEM: 80.0%,8MGBA,central_nervous_system,glioma,astrocytoma,45.7
+MDAMB157_BREAST,3,-0.9595820008163772,Adherent,RPMI; 10% FBS,MDA-MB-157,breast,TNBC,,8
+MELHO_SKIN,2,-1.0645505547791585,Adherent,RPMI-1640: 10%FBS,MEL-HO,skin,melanoma,,41.4
+YAPC_PANCREAS,4,-1.4137053476389725,Adherent,RPMI-1640: 10%FBS,,pancreas,,,7
+DB_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-0.7433778196406147,Suspension,RPMI-1640: 10%FBS,DB,lymphoma,DLBCL,,41.2
+59M_OVARY,2,-1.2869710718962892,Adherent,"DMEM; 10% FBS + 2 mM Glutamine, sodium pyruvate, ITS",59M,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,5.7
+LN235_CENTRAL_NERVOUS_SYSTEM,2,-1.0433684012380415,Adherent,DMEM; 10% FBS,LN-235,central_nervous_system,glioma,astrocytoma,12.7
+G292CLONEA141B1_BONE,2,-1.129185195445451,Adherent,M10,G292CLONEA141B1_BONE,bone,osteosarcoma,,24.8
+AU565_BREAST,2,-1.4504519329203542,Adherent,DMEM; 10% FBS,AU565,breast,HER2Amp,,36.2
+CFPAC1_PANCREAS,3,-1.356132561535899,Adherent,DMEM; 10% FBS,CFPAC-1,pancreas,,,32.9
+SF295_CENTRAL_NERVOUS_SYSTEM,2,-1.6441786615373348,Adherent,RPMI; 10% FBS,SF-295,central_nervous_system,glioma,glioblastoma,20.9
+SMSCTR_SOFT_TISSUE,2,-1.1860788079538342,Adherent,DMEM; 10%FBS,SMS-CTR,rhabdomyosarcoma,,,38.2
+KALS1_CENTRAL_NERVOUS_SYSTEM,2,-1.4765898419005274,Adherent,"RPMI; 5% FBS
+",KALS-1,central_nervous_system,glioma,glioblastoma,7.2
+HS578T_BREAST,3,-1.3918884588598608,Adherent,DMEM; 10% FBS,Hs 578T,breast,TNBC,,29.1
+BT549_BREAST,3,-1.3513383392828946,Adherent,RPMI-1640: 10% heat inactivated FBS,BT-549,breast,TNBC,,22.6
+NCIH716_LARGE_INTESTINE,3,-1.8656364440453792,Semi-adherent,RPMI; 10% FBS,NCI-H716,colorectal,,,8
+CAMA1_BREAST,3,-1.2920953315857209,Adherent,EMEM;10% FBS;,CAMA-1,breast,ERpos,,6.5
+NCIH322_LUNG,4,-1.2438383769268957,Adherent,RPMI;10% FBS; 2%Glutamine,NCI-H322,lung,lung_NSC,lung_adenocarcinoma,20.5
+DAOY_CENTRAL_NERVOUS_SYSTEM,2,-1.2487317702155645,Adherent,EMEM: 90.0% 10%FBS,DAOY_CENTRAL_NERVOUS_SYSTEM,central_nervous_system,medulloblastoma,non-MYC,8.4
+NB1_AUTONOMIC_GANGLIA,3,-1.0999322763792083,Adherent,RPMI-1640: 10%FBS,,peripheral_nervous_system,neuroblastoma,,35.6
+PANC1005_PANCREAS,2,-1.699580877983864,Adherent,RPMI; 15% FBS; 2mM Glutamine; 1.5 g/L Sodium bicarbonate; 4.5g/L glucose; 10mM HEPES; 1mM Sodium Pyruvate; 10 units/mL Insulin,Panc 10.05,pancreas,,,6.8
+HEC50B_ENDOMETRIUM,2,-2.6194094580106526,Adherent,EMEM; 15% FBS;,HEC-50B,uterus,uterus_endometrium,,12.6
+CAL29_URINARY_TRACT,2,-1.4798505426245117,Adherent,DMEM; 10% FBS,CAL29,urinary_tract,,,17.2
+TC205_BONE,2,-1.4083054667793675,Adherent,"RPMI-1640: 90.0%; 10%heat inactive FBS,2mMGlutamax",,bone,Ewing_sarcoma,,46.4
+MKN45_STOMACH,2,-1.7335311485359597,Adherent,RPMI; 10% FBS,MKN-45,gastric,gastric_adenocarcinoma,diffuse_gastric,23.9
+OVCAR8_OVARY,3,-2.158543349702549,Adherent,RPMI; 10% FBS,OVCAR-8,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,39.8
+COLO678_LARGE_INTESTINE,3,-1.598057774673777,Adherent,RPMI-1640: 10%FBS,COLO-678,colorectal,,,10.7
+NCIH23_LUNG,4,-2.6132968926743803,Adherent,RPMI; 10% FBS,NCI-H23,lung,lung_NSC,lung_adenocarcinoma,18.2
+HS766T_PANCREAS,2,-1.7423846431118348,Adherent,DMEM; 10% FBS,Hs 766T,pancreas,,,6.2
+RT112_URINARY_TRACT,2,-1.1721084047062322,Adherent,RPMI; 10% FBS,RT-112,urinary_tract,,,32.2
+WM2664_SKIN,2,-1.5605602450485816,Adherent,DMEM; 10% FBS,WM-266-4,skin,melanoma,,28.5
+MYLA_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.776615832407676,Suspension,RPMI + 2mM Glutamine + 100 U/ml IL-2 + 100 U/ml IL-4 + 10% human AB serum,,lymphoma,T-cell_lymphoma_other,,10.7
+KMBC2_URINARY_TRACT,2,-1.3972209959426587,Adherent,DMEM; 10% FBS,KMBC2,urinary_tract,,,29.4
+BICR56_UPPER_AERODIGESTIVE_TRACT,2,-1.9345680163931704,,DMEM; 10% FBS; 2mM Glutamine; 0.4ug/ml hydrocortisone,BICR 56,upper_aerodigestive,upper_aerodigestive_squamous,,19.3
+SUIT2_PANCREAS,2,-1.214159350825561,Adherent,"RPMI-1640: 90.0%,10%FBS",SUIT2,pancreas,,,24.6
+KMS11_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,1,-1.8854375250230089,Suspension,RPMI; 10% FBS,KMS-11,multiple_myeloma,,,3.9
+D341MED_CENTRAL_NERVOUS_SYSTEM,3,-1.798387811032728,,,"D341, D341MED",central_nervous_system,medulloblastoma,med_group_3,4.4
+NCIH747_LARGE_INTESTINE,3,-1.2459065024362332,Adherent,RPMI; 10% FBS,NCI-H747,colorectal,,,15.4
+ISTMES1_PLEURA,2,-1.5752046133849036,Adherent,DMEM: 90.0%; 2mMGlutamax-1,ISTMES1,mesothelioma,,,20
+COGAR359_SOFT_TISSUE,2,-1.392595490380418,Suspension,IMDM + 20% FBS + 4mM Glutamine + 1X Insulin-Transferrin-Selenium,COG-AR-359,rhabdoid,,,18.3
+LN382_CENTRAL_NERVOUS_SYSTEM,2,-1.418024474998765,Adherent,DMEM; 10% FBS,LN-382,central_nervous_system,glioma,glioblastoma,good
+SNU398_LIVER,2,-1.4450042516526664,Adherent,RPMI; 10% FBS,SNU398,liver,,,41.3
+U251MG_CENTRAL_NERVOUS_SYSTEM,2,-2.2641833303991867,Adherent,DMEM; 10% FBS,U251-MG,central_nervous_system,glioma,astrocytoma,11.3
+SKHEP1_LIVER,2,-1.7784254863078999,Adherent,EMEM: 10.0% FBS,Sk-HEP-1,liver,,,19.1
+5637_URINARY_TRACT,2,-1.9295542554539336,Light Adherent or Suspension,RPMI-1640: 90.0%,5637,urinary_tract,,,4.9
+HEC251_ENDOMETRIUM,2,-1.8653813540773112,Adherent,EMEM;0.15% FBS;,HEC-251,uterus,uterus_endometrium,,17.4
+KNS60_CENTRAL_NERVOUS_SYSTEM,1,-1.084075907565928,Adherent,DMEM; 5% FBS,KNS-60,central_nervous_system,glioma,glioblastoma,28.8
+A2780_OVARY,2,-2.4719624104413858,Adherent,RPMI; 10% FBS,A2780,ovary,ovary_adenocarcinoma,ovary_endometrioid,16.7
+CALU6_LUNG,2,-1.0688323193706852,Adherent,EMEM: 90.0% 10%FBS,Calu-6,lung,lung_NSC,,8.1
+HEC1B_ENDOMETRIUM,2,-1.0396550977309615,Adherent,EMEM: 90.0% 10%FBS,HEC1B,uterus,uterus_endometrium,,35.5
+A2058_SKIN,2,-1.4016740699637769,Adherent,DMEM; 10% FBS,A2058,skin,melanoma,,0
+OE21_OESOPHAGUS,2,-1.7229637538465128,Adherent,RPMI-1640: 90.0%,OE21_OESOPHAGUS,esophagus,esophagus_squamous,,15.4
+SW48_LARGE_INTESTINE,2,-1.7607267406810456,Semi-adherent,RPMI-1640: 90.0%,SW 48,colorectal,colorectal_MSI,,35.8
+PC14_LUNG,3,-1.5205521605736003,Adherent,RPMI; 10% FBS,PC-14,lung,lung_NSC,lung_adenocarcinoma,8.4
+KYSE30_OESOPHAGUS,2,-1.4793226679740392,Adherent,RPMI:F12 (1:1); 20% FBS,KYSE-30,esophagus,esophagus_squamous,,11
+TCCPAN2_PANCREAS,3,-1.517645141994969,Adherent,RPMI-1640: 10%FBS,,pancreas,,,16.3
+KM12_LARGE_INTESTINE,3,-2.162947662472354,Semi-Adherent,R10,KM12,colorectal,colorectal_MSI,,19.9
+IPC298_SKIN,1,-1.7326855161511718,Adherent,RPMI-1640; 10%FBS,IPC298,skin,melanoma,,5.7
+ONCODG1_OVARY,2,-1.4020496538344929,Adherent,RPMI; 10% FBS,ONCODG1,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,8
+VMRCRCW_KIDNEY,1,-0.9768421761326362,Adherent,EMEM; 10% FBS,VMRCRCW,kidney,,,8.7
+JR_SOFT_TISSUE,2,-1.5729542628909616,Adherent,RPMI;10% FBS;,JR,rhabdomyosarcoma,,,52.4
+RT4_URINARY_TRACT,2,-0.9648447070520834,Adherent,M10,RT4,urinary_tract,,,58.1
+TE8_OESOPHAGUS,2,-0.9847995434234192,Adherent,RPMI-1640: 10%FBS,TE8,esophagus,esophagus_squamous,,28.5
+HS695T_SKIN,2,-1.2408573012191637,Adherent,EMEM: 10% FBS,Hs 695T,skin,melanoma,,37.8
+RKN_SOFT_TISSUE,2,-0.9490623123657412,Adherent,HamsF12; 10% FBS,RKN,soft_tissue,leiomyosarcoma,,17.8
+MDAMB435S_SKIN,2,-1.947107610474636,Adherent,RPMI-1640: 10%FBS,MDA-MB-435S,skin,melanoma,,22.8
+NB4_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,3,-0.7716441798899292,Suspension,RPMI;10% FBS;,NB-4,leukemia,AML,,good
+IGR39_SKIN,2,-0.9252781768401828,Adherent,DMEM; 15% FBS,IGR-39,skin,melanoma,,28.9
+KYSE70_OESOPHAGUS,2,-1.6716885765824108,Adherent,RPMI; 10% FBS,KYSE-70,esophagus,esophagus_squamous,,13.6
+T3M4_PANCREAS,1,-1.3071606167323573,Adherent,Ham F-10: 90.0%;10%FBS,T3M4,pancreas,,,7.1
+LN443_CENTRAL_NERVOUS_SYSTEM,2,-1.1222638624552603,Adherent,DMEM; 10% FBS,LN-443,central_nervous_system,glioma,glioblastoma,good
+KP4_PANCREAS,4,-2.5215496680483698,Adherent,DMEM:F12 (1:1); 10% FBS,KP4,pancreas,,,11.7
+JMSU1_URINARY_TRACT,2,-1.2971109993246488,Adherent,RPMI-1640: 10%FBS; 2mMGlutamax-1,JMSU1,urinary_tract,,,55
+TE1_OESOPHAGUS,2,-1.357407855443669,Adherent,RPMI-1640: 10%FBS,TE1,esophagus,esophagus_squamous,,8.5
+CHLA15_AUTONOMIC_GANGLIA,2,-1.708648397677497,Semi-adherent,IMDM + 20% FBS + 4mM Glutamine + 1X Insulin-Transferrin-Selenium,,peripheral_nervous_system,neuroblastoma,,9
+OVMANA_OVARY,2,-1.0154698073161803,Adherent,RPMI; 10% FBS,OVMANA,ovary,ovary_adenocarcinoma,ovary_clear_cell,50.5
+COGE352_BONE,2,-1.6486408791704767,Light Adherent or Suspension,IMDM + 20% FBS + 4mM Glutamine + 1X Insulin-Transferrin-Selenium,COG-E-352,bone,Ewing_sarcoma,,1.8
+NCIH460_LUNG,2,-1.7359175063266867,Adherent,RPMI; 10% FBS,NCI-H460,lung,lung_NSC,lung_large,16.9
+HCC1428_BREAST,2,-1.414671093004643,Adherent,RPMI; 10% FBS,HCC1428,breast,ERpos,,7.5
+KARPAS422_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.2730328235512929,Suspension,RPMI; 20% FBS,KARPAS-422,lymphoma,DLBCL,,23.4
+LP1_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.54010839772118,Semi-adherent,IMDM; 10% FBS,LP-1,multiple_myeloma,,,4.8
+GCT_SOFT_TISSUE,2,-1.4015392186893418,,M10,GCT,soft_tissue,pleomorphic_sarcoma,,20.2
+HCC827_LUNG,3,-2.0951554614571197,Adherentepithelialdensity >30%,RPMI; 10% FBS,HCC827,lung,lung_NSC,lung_adenocarcinoma,12.7
+HCC56_LARGE_INTESTINE,3,-1.7198963430429268,Adherent,EMEM; 10% FBS,HCC56,colorectal,,,28.1
+SNU503_LARGE_INTESTINE,3,-1.0942956548760168,Adherent,RPMI;10% FBS;,,colorectal,,,22.8
+HT1197_URINARY_TRACT,2,-1.0961591033528608,Adherent,EMEM; 10% FBS,HT-1197,urinary_tract,,,28
+HCC1419_BREAST,2,-1.0416417981702266,Adherent,RPMI-1640: 90.0%,HCC1419,breast,HER2Amp,,48.7
+PK1_PANCREAS,2,-1.3249901535912234,Adherent,"RPMI-1640: 90.0%,10%FBS",PK1,pancreas,,,17.5
+HUH7_LIVER,2,-1.2499431858232803,Adherent,DMEM; 10% FBS,HuH-7,liver,,,47.9
+CAL78_BONE,2,-0.9364319342852208,Adherent,RPMI-1640: 80.0%,CAL78_BONE,bone,chondrosarcoma,,33.4
+KNS62_LUNG,2,-2.0422489543417104,Adherent,MEMalpha; 10% FBS,KNS-62,lung,lung_NSC,lung_squamous,20.2
+DU4475_BREAST,2,-0.901216975645888,Suspension,RPMI; 10% FBS,Du4475,breast,TNBC,,55.9
+HCC1359_LUNG,3,-1.0160060088046805,,RPMI;10% FBS;,HCC1359,lung,lung_NSC,lung_large,19.3
+HOP62_LUNG,3,-1.1271147090216576,Adherent,RPMI; 10% FBS,HOP62,lung,lung_NSC,lung_adenocarcinoma,22.6
+639V_URINARY_TRACT,1,-1.5944958977021957,Adherent,DMEM; 10% FBS,639V,urinary_tract,,,20.3
+LCLC103H_LUNG,2,-1.2911293484010669,Adherent,RPMI;10% FBS;,LCLC-103H,lung,lung_NSC,lung_large,6.4
+TE4_OESOPHAGUS,2,-1.3424319646490472,Adherent,RPMI-1640: 10%FBS,TE4,esophagus,esophagus_squamous,,36.2
+JIMT1_BREAST,3,-1.8690755389155125,Adherent,RPMI; 10% FBS,JIMT1,breast,HER2Amp,,4.5
+D283MED_CENTRAL_NERVOUS_SYSTEM,2,-1.6781273038008273,Semi-Adherent,E10,D283,central_nervous_system,medulloblastoma,med_group_3,30.7
+OV90_OVARY,2,-1.4569144298917251,Adherent,1:1 mixture of MCDB 105 medium with 1.5 g/L sodium bicarbonate added and Medium 199; 10% FBS,OV-90,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,12.4
+MOLM13_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,3,-1.5586213931372883,Suspension,RPMI;20% FBS;,MOLM-13,leukemia,AML,,good
+PECAPJ34CLONEC12_UPPER_AERODIGESTIVE_TRACT,2,-2.1484141562005847,Adherent,IMDM; 10% FBS;2mM Glutamine,PE/CA-PJ34 (clone C12),upper_aerodigestive,upper_aerodigestive_squamous,,19.8
+NCIH1568_LUNG,2,-1.0942450598343738,Adherent,RPMI-1640: 90.0%,NCI-H1568,lung,lung_NSC,lung_adenocarcinoma,5.4
+SW620_LARGE_INTESTINE,3,-2.173701403781448,Semi-adherent,Leibovitz's L-15; 10%FBS,SW 620,colorectal,,,7.3
+CH157MN_CENTRAL_NERVOUS_SYSTEM,2,-1.5321425601638792,Semi-adherent,DMEM; 10% FBS,CH-157MN,central_nervous_system,meningioma,,7.2
+NCIH520_LUNG,3,-1.5354611080335114,Adherent,RPMI; 10% FBS,NCI-H520,lung,lung_NSC,lung_squamous,13.4
+FU97_STOMACH,2,-1.5670822863225509,Adherent,DMEM;10% FBS; Human Insulin: 0.01 mg/mL,FU97,gastric,gastric_adenocarcinoma,diffuse_gastric,31.2
+SNU449_LIVER,2,-1.3328598373047835,Adherent,RPMI; 10% FBS,SNU449,liver,,,10.8
+SKMEL24_SKIN,2,-0.951150798466146,Adherent,EMEM: 10%FBS,SKMEL24,skin,melanoma,,20.9
+NCIH1703_LUNG,2,-2.1727720536328445,Adherent,RPMI-1640: 10% FBS,NCI-H1703,lung,lung_NSC,lung_adenocarcinoma,9
+LMSU_STOMACH,2,-2.0274204104772235,epithelial-like,HamF10+10%FBS,LMSU,gastric,,,13.8
+SAOS2_BONE,2,-1.3648017704314623,Adherent,McCoy's 5A; 15% FBS,Saos-2,bone,osteosarcoma,,40
+KMS26_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.5466694218370984,Suspension,RPMI; 10% FBS,KMS-26,multiple_myeloma,,,23.9
+SNU182_LIVER,2,-0.8027977439648045,Adherent,RPMI; 10% FBS,SNU182,liver,,,36.6
+GSU_STOMACH,2,-1.5458336789987863,Semi-adherent,RPMI-1640: 10%FBS,GSU,gastric,gastric_adenocarcinoma,,15.3
+NCIH2110_LUNG,2,-1.1014482554912741,Adherent,RPMI; 10% FBS,NCI-H2110,lung,lung_NSC,,32.2
+EPLC272H_LUNG,3,-1.0818129535747083,Adherent,RPMI; 20% FBS,EPLC-272H,lung,lung_NSC,lung_squamous,14.2
+MDAMB468_BREAST,1,-1.6593878987740966,Adherent,DMEM; 10% FBS,MDA-MB-468,breast,TNBC,,9.4
+HT29_LARGE_INTESTINE,2,-1.9029396476314469,Adherent,McCoy's 5A; 10% FBS,,colorectal,,,14.8
+KU1919_URINARY_TRACT,2,-1.7141079164193869,Adherent,RPMI; 10%heat inactive FBS,KU1919,urinary_tract,,,33.3
+NCIH1437_LUNG,3,-1.9066943186518541,Adherent,RPMI; 10% FBS,NCI-H1437,lung,lung_NSC,lung_adenocarcinoma,9.2
+U2OS_BONE,2,-1.5916183209078143,Adherent,McCoy's 5A; 10% FBS,U2-OS,bone,osteosarcoma,,52.6
+TOV21G_OVARY,3,-2.109491861932112,Adherent,MCDB 105:Medium 199 (1:1); 15% FBS,TOV-21G,ovary,ovary_adenocarcinoma,ovary_clear_cell,37.7
+NCIH2126_LUNG,3,-1.2657944426685146,Adherent,DMEM:F12 (1:1); 5% FBS; 0.005 mg/ml Insulin; 0.01 mg/ml transferrin; 30 nM sodium selenite; 10 nM hydrocortisone; 10 nM beta estradiol; 10 mM HEPES; 2 mM L-glutamine,NCI-H2126,lung,lung_NSC,lung_adenocarcinoma,18.7
+M059K_CENTRAL_NERVOUS_SYSTEM,2,-1.1437054182214597,Adherent,DMEM/F12 (1:1);10 % FBS;,M059K,central_nervous_system,glioma,glioblastoma,25.5
+RERFLCAI_LUNG,2,-1.1876809874349727,Adherent,EMEM: 10% FBS,RERF-LC-AI,lung,lung_NSC,lung_squamous,5.9
+SKBR3_BREAST,2,-1.2000014893322064,Semi-adherent,McCoy's 5A; 10% FBS,SK-BR-3,breast,HER2Amp,,27.1
+ABC1_LUNG,3,-1.965315616242422,Adherent,EMEM; 10% FBS,ABC-1,lung,lung_NSC,lung_adenocarcinoma,22.5
+UACC62_SKIN,2,-1.1394194300535652,Adherent,RPMI-1640: 10%FBS,UACC-62,skin,melanoma,,26.9
+TUHR10TKB_KIDNEY,2,-1.2177517061020542,Adherent,RPMI-1640: 90.0%,TUHR10TKB,kidney,,,54.8
+NCIH1944_LUNG,4,-1.465610838724434,Adherent,RPMI; 10% FBS,NCI-H1944,lung,lung_NSC,lung_adenocarcinoma,37.5
+CAL27_UPPER_AERODIGESTIVE_TRACT,1,-2.5638624116481963,,DMEM;10% FBS;,CAL 27,upper_aerodigestive,upper_aerodigestive_squamous,,14.3
+CJM_SKIN,2,-1.9278046264462905,Adherent,Hams F-12; 10% FBS,CJM,skin,melanoma,,10.7
+UMUC1_URINARY_TRACT,2,-1.4298838759181174,Adherent,"EMEM; 10% FBS, 2mMGlutamax-1, 1xNEAA",UMUC1,urinary_tract,,,33.7
+OAW28_OVARY,2,-1.5615291992415896,Adherent,DMEM; 10% FBS,OAW28,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,49.9
+CCFSTTG1_CENTRAL_NERVOUS_SYSTEM,2,-1.1012985895512772,Adherent,RPMI-1640: 90.0%,CCFSTTG1,central_nervous_system,glioma,astrocytoma,18.5
+HEC151_ENDOMETRIUM,2,-1.2096490968880067,Adherent,EMEM; 15% FBS,HEC151,uterus,uterus_endometrium,,44
+HUH1_LIVER,2,-1.63872340227761,Adherent,DMEM;10% FBS;,huH-1,liver,,,3.9
+COV362_OVARY,3,-1.0593954211738292,Adherent,DMEM; 10% FBS; 2mM L-glutamine,COV362,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,16.5
+CCK81_LARGE_INTESTINE,3,-0.5128662691031677,Adherent,"EMEM, 10%FBS",,colorectal,colorectal_MSI,,49.9
+LXF289_LUNG,3,-1.5141288850660608,Adherent,Hams F-12; 10% FBS,LXF-289,lung,lung_NSC,lung_adenocarcinoma,17.8
+HS944T_SKIN,2,-1.313157075097148,Adherent,DMEM; 10% FBS,Hs 944.T,skin,melanoma,,11.3
+UACC257_SKIN,1,-1.4052336415297295,Adherent,RPMI-1640; 10%FBS,UACC257,skin,melanoma,,18.7
+SKNDZ_AUTONOMIC_GANGLIA,2,-1.2603880137970274,Adherent,DMEM; 10% FBS; NEAA,,peripheral_nervous_system,neuroblastoma,,21.3
+KP3_PANCREAS,3,-1.0705946445759649,Adherent,RPMI-1640: 10%FBS,,pancreas,,,30.9
+ZR751_BREAST,2,-1.5246593955156922,Adherent,RPMI; 10% FBS,ZR-75-1,breast,ERpos,,20.9
+NCIH2122_LUNG,4,-1.2804519906439815,Adherent,RPMI; 10% FBS,NCI-H2122,lung,lung_NSC,lung_adenocarcinoma,31.1
+RD_SOFT_TISSUE,2,-1.7951665098774348,Adherent,"DMEM:HAM's F12  1:1;5% FBS; .005 mg/ml insulin, .01 mg/ml transferrin, 30nM sodium selenite, 10 nM hydrocortisone, 10 nM beta estradiol, 10 mM HEPES, 2 mM L-glutamine",RD,rhabdomyosarcoma,,,18.9
+NCIH1792_LUNG,4,-1.0421250832512725,Adherent,RPMI; 10% FBS,NCI-H1792,lung,lung_NSC,lung_adenocarcinoma,14.3
+SNU685_ENDOMETRIUM,2,-1.3678882643040329,Adherent,RPMI;10% FBS;,SNU-685,uterus,uterus_endometrium,,15.9
+TE6_OESOPHAGUS,2,-1.121610289551788,Adherent,RPMI; 10% FBS,TE6,esophagus,esophagus_squamous,,40
+EJM_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-0.99284504998724,Semi-adherent,IMDM; 10% FBS,EJM,multiple_myeloma,,,23.9
+UOK101_KIDNEY,2,-1.3378479838576376,Adherent,DMEM; 10% FBS,UOK101,kidney,,,38.7
+SKNFI_AUTONOMIC_GANGLIA,2,-0.6483350642081541,Adherent,DMEM; 10% FBS; NEAA,,peripheral_nervous_system,neuroblastoma,,69
+JJN3_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.5971323146069412,Suspension,DMEM:IMDM (1:1); 20% FBS,JJN-3,multiple_myeloma,,,2.4
+BHY_UPPER_AERODIGESTIVE_TRACT,2,-1.2431581763276411,Adherent,DMEM;10% FBS;,BHY,upper_aerodigestive,upper_aerodigestive_squamous,,8.8
+CHLA266_SOFT_TISSUE,2,-1.3847211277624871,Adherent,"Iscove (IMDM): 20%FBS: 2mMGlutamax; 005 mg/ml insulin, .01 mg/ml transferrin, 30nM sodium selenite",CHLA-266,rhabdoid,,,35.8
+NCIH1581_LUNG,2,-1.5906947445543251,Adherent,DMEM:F12 (1:1); 5% FBS,NCI-H1581,lung,lung_NSC,lung_large,52.8
+U87MG_CENTRAL_NERVOUS_SYSTEM,2,-0.8163939581901681,Adherent,EMEM; 10% FBS,U-87 MG,central_nervous_system,glioma,astrocytoma,37.9
+OSRC2_KIDNEY,2,-1.1859117536783264,Adherent,RPMI;10% FBS;,OSRC2,kidney,,,19.4
+YD38_UPPER_AERODIGESTIVE_TRACT,2,-1.3579861606666084,Adherent,RPMI-1640; 10%FBS,YD-38,upper_aerodigestive,upper_aerodigestive_squamous,,16.1
+CAS1_CENTRAL_NERVOUS_SYSTEM,2,-0.8750750404443244,Adherent,DMEM; 10% FBS,CAS-1,central_nervous_system,glioma,glioblastoma,42.9
+HCC95_LUNG,2,-1.5671667333115344,Adherent,RPMI; 10% FBS,HCC95,lung,lung_NSC,lung_squamous,13.3
+OVK18_OVARY,3,-2.178283779148384,Adherent,MEM10,OVK18,ovary,ovary_adenocarcinoma,ovary_endometrioid,17.7
+VMCUB1_URINARY_TRACT,2,-1.602016064319557,Adherent,DMEM: 90.0%; 10%FBS,VMCUB1,urinary_tract,,,32.8
+CAL33_UPPER_AERODIGESTIVE_TRACT,2,-0.9540731860091096,,DMEM;10% FBS;,CAL-33,upper_aerodigestive,upper_aerodigestive_squamous,,14.3
+SKNBE2_AUTONOMIC_GANGLIA,4,-1.8764331742794824,Adherent,EMEM:F12 (1:1); 10% FBS,,peripheral_nervous_system,neuroblastoma,,49.1
+TUHR4TKB_KIDNEY,1,-1.1468537415928428,Adherent,DMEM;10% FBS;,TUHR4TKB,kidney,,,22.8
+MELJUSO_SKIN,2,-1.5730937033675876,Adherent,RPMI-1640: 10%FBS,MEL-JUSO,skin,melanoma,,19.8
+CME1_SOFT_TISSUE,2,-1.7697412547053248,Adherent,D20+1mM Sodium pyruvate,CME-1,soft_tissue,synovial_sarcoma,,30.1
+MALME3M_SKIN,2,-0.7619037278023539,Adherent,RPMI; 10% FBS,Malme-3M,skin,melanoma,,53.4
+SNU1_STOMACH,2,-1.9422692057694613,Suspension,RPMI-1640: 90.0%,SNU1_STOMACH,gastric,,,14.6
+647V_URINARY_TRACT,2,-1.5596898692470669,Adherent,"DMEM; 15% FBS, 2mMGlutamax-1",647V,urinary_tract,,,14.2
+SLR23_KIDNEY,2,-1.8693047241693959,Adherent,RPMI;10% FBS w/ kanamycin,SLR23,kidney,,,17
+143B_BONE,1,-2.1050893691975903,Adherent,EMEM; 10% FBS; 0.015 mg/ml 5-bromo-2'-seoxyuridine,143B,bone,osteosarcoma,,11
+MFE319_ENDOMETRIUM,2,-0.8547247042848223,Adherent,40% RPMI 1640 + 40% MEM (with Earle's salts) + 20% h.i. FBS,MFE319,uterus,uterus_endometrium,,42.1
+SW982_SOFT_TISSUE,1,-1.1757269460081596,Adherent,D20+1mM Sodium pyruvate,SW982,soft_tissue,synovial_sarcoma,,17
+PLCPRF5_LIVER,2,-1.708796859078393,Adherent,DMEM; 10% FBS,PLC/PRF/5,liver,,,15.7
+SCS214_SOFT_TISSUE,2,-0.9567752399593168,Adherent,D20+SP,SCS-214,soft_tissue,synovial_sarcoma,,52.8
+FADU_UPPER_AERODIGESTIVE_TRACT,2,-1.9909723775955568,,EMEM: 10%FBS,FADU,upper_aerodigestive,upper_aerodigestive_squamous,,7.5
+MM1S_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.1483768064978956,Semi-adherent,RPMI; 10% FBS,MM1-S,multiple_myeloma,,,6.9
+PF382_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.836487891335363,Suspension,RPMI; 10% FBS,PF382 Cas9,leukemia,T-cell_ALL,,28.8
+CAL51_BREAST,3,-1.492126239024173,Adherent,DMEM; 20% FBS;,CAL-51,breast,TNBC,,43.2
+COGN278_AUTONOMIC_GANGLIA,2,-1.6543402214259293,Adherent,IMDM + 20% FBS + 4mM Glutamine + 1X Insulin-Transferrin-Selenium,,peripheral_nervous_system,neuroblastoma,,33.1
+KMS20_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-0.7564265932845742,Suspension,RPMI; 10% FBS,KMS-20,multiple_myeloma,,,55.4
+KE39_STOMACH,2,-1.7670268173909962,Adherent,RPMI-1640: 10%FBS,KE39,gastric,gastric_adenocarcinoma,,30
+MAC2A_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,3,-1.1014149137223883,Suspension,RPMI; 15% FBS,Mac-2A,lymphoma,T-cell_lymphoma_other,,27.5
+NCIH2052_PLEURA,1,-0.8937745183892408,Adherent,RPMI; 10% FBS,NCI-H2052,mesothelioma,,,30.5
+WM983B_SKIN,2,-1.203466815112764,Adherent,RPMI-1640: 10%FBS,WM-983B,skin,melanoma,,13.1
+OVISE_OVARY,3,-1.4879140364967267,Adherent,RPMI; 10% FBS,OVISE,ovary,ovary_adenocarcinoma,ovary_clear_cell,31.8
+HCC1806_BREAST,3,-1.5023789467099802,Adherent,RPMI; 10% FBS,HCC1806,breast,TNBC,,2.6
+RPMI8226_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-2.2569754188936613,Adherent+Suspension,RPMI; 10% FBS,RPMI 8226,multiple_myeloma,,,39.3
+LOVO_LARGE_INTESTINE,3,-0.9323811472188288,Adherent,F12; 10% FBS; 2mMGlutamax-1; 1500mg/L NaHCO3 (2 vols of 100X),LoVo,colorectal,colorectal_MSI,,46.6
+SJSA1_BONE,1,-1.310676683644886,Adherent,RPMI; 10% FBS,SJSA-1,bone,osteosarcoma,,44.7
+KELLY_AUTONOMIC_GANGLIA,3,-1.724737727368517,Adherent,RPMI-1640: 10%FBS,,peripheral_nervous_system,neuroblastoma,,28.3
+JHUEM1_ENDOMETRIUM,2,-1.0770382394669928,Adherent,"DMEM/F-12 (1:1): 85.0%, 15%FBS",JHUEM1_ENDOMETRIUM,uterus,uterus_endometrium,,42.5
+COGN305_AUTONOMIC_GANGLIA,2,-1.028277188756338,Semi-adherent,IMDM + 20% FBS + 4mM Glutamine + 1X Insulin-Transferrin-Selenium,,peripheral_nervous_system,neuroblastoma,,16.5
+HEC59_ENDOMETRIUM,2,-1.1373356611128598,Adherent,EMEM; 15% FBS;,HEC-59,uterus,uterus_endometrium,,33.5
+8305C_THYROID,2,-0.997099321308536,Adherent,RPMI-1640: 85.0%,8305C,thyroid,,,8.6
+THP1_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,3,-0.9557421548151576,Suspension,RPMI-1640: 10%FBS; BME (0.05mM),THP-1,leukemia,AML,,34.4
+IGR1_SKIN,2,-1.7804208151713403,Adherent,DMEM;10% FBS;,IGR-1,skin,melanoma,,8.6
+PATU8988S_PANCREAS,2,-1.352390331552133,Adherent,"DMEM: 90.0%;10%FBS, 2mMGlutamax",PATU8988S,pancreas,,,6.3
+KP2_PANCREAS,3,-1.4359657728729889,Adherent,RPMI; 10% FBS,KP-2,pancreas,,,15
+SKMES1_LUNG,2,-1.3013772099166236,Adherent,DMEM; 10% FBS,SK-MES-1,lung,lung_NSC,lung_squamous,11.3
+C32_SKIN,2,-1.0617394472880852,Adherent,EMEM; 10% FBS; 0.1mM NEAA,C32,skin,melanoma,,33.9
+HUH6_LIVER,2,-1.2949546134594274,Adherent,DMEM; 10% FBS,HUH6,liver,hepatoblastoma,,14.8
+HT1080_SOFT_TISSUE,2,-1.9139743114352152,Adherent,EMEM; 10.0% FBS,HT-1080,soft_tissue,fibrosarcoma,,14.1
+DKMG_CENTRAL_NERVOUS_SYSTEM,2,-1.0591565558075344,Adherent,R10 + 2mM glutamine,DK-MG,central_nervous_system,glioma,glioblastoma,49.6
+SEM_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-2.3395115950130028,Suspension,IMDM; 10% FBS,SEM,leukemia,B-cell_ALL,,25.4
+RCC10RGB_KIDNEY,2,-0.7719940813865123,Adherent,DMEM: 90.0%,RCC10RGB,kidney,,,52.4
+HT144_SKIN,2,-1.1655029399485621,Adherent,McCoy 5A: 10%FBS,HT-144,skin,melanoma,,50.5
+KNS81_CENTRAL_NERVOUS_SYSTEM,2,-1.1762999391891291,Adherent,DMEM; 5% FBS,KNS-81,central_nervous_system,glioma,glioblastoma,60
+HCC1954_BREAST,2,-1.2972015145631548,Adherent,RPMI; 10% FBS,HCC1954,breast,HER2Amp,,33.2
+CORL47_LUNG,1,-1.2847851302822988,Suspension,RPMI-1640: 10%FBS; 2mMGlutamax-1,CORL44,lung,lung_small,,39.7
+NCIH1650_LUNG,2,-1.5849486093309697,Adherent,RPMI; 10% FBS,NCI-H1650,lung,lung_NSC,lung_adenocarcinoma,8.5
+EFE184_ENDOMETRIUM,2,-0.5873821374435386,Adherent,RPMI; 10% FBS,EFE-184,uterus,uterus_endometrium,,17.8
+KIJK_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,3,-1.4191398806384286,Suspension,RPMI 1640 + 20% FBS,,lymphoma,ALCL,,16.8
+EFO27_OVARY,2,-1.6435105558981145,Adherent,RPMI; 20% FBS; 0.1mM NEAA; 1mM Sodium Pyruvate,EFO-27,ovary,ovary_adenocarcinoma,ovary_endometrioid,28.2
+COV644_OVARY,3,-0.8963016025963113,Adherent,DMEM; 10% FBS; 2mM L-glutamine,COV644,ovary,ovary_adenocarcinoma,ovary_mucinous,11.5
+DLD1_LARGE_INTESTINE,3,-2.1159827165902243,Adherent,RPMI 1640 + 10% FBS,DLD-1,colorectal,,,25.9
+SYO1_SOFT_TISSUE,2,-1.7207932339591152,Adherent,D20+1mM Sodium pyruvate,SYO1,soft_tissue,synovial_sarcoma,,16.7
+T84_LARGE_INTESTINE,3,-1.4089972553309011,Adherent,DMEM:F12(1:1); 5%FBS; 2mMGlutamine,,colorectal,,,19.7
+PK45H_PANCREAS,3,-0.8855645132225405,Adherent,RPMI-1640: 10%FBS,,pancreas,,,15.9
+HCC1937_BREAST,2,-1.2798898109042671,Adherent,RPMI-1640; 10%FBS,HCC1937,breast,TNBC,,12.5
+SUPT1_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.749302469922135,Suspension,RPMI; 10% FBS,Sup-T1,leukemia,T-cell_ALL,,7.1
+KNS42_CENTRAL_NERVOUS_SYSTEM,2,-0.9156847205049692,Adherent,EMEM; 5% FBS,KNS42,central_nervous_system,glioma,glioblastoma,38.1
+LN18_CENTRAL_NERVOUS_SYSTEM,2,-1.463737368333021,Adherent,DMEM; 5% FBS,LN-18,central_nervous_system,glioma,glioblastoma,19.5
+OV7_OVARY,2,-0.7896598452945998,Adherent,DMEM:F12 (1:1); 5% FBS; 2mM L-glutamine; 0.5ug/ml hydrocortisone; 10ug/ml insulin,OV7,ovary,ovary_adenocarcinoma,ovary_clear_cell,12.7
+KMS27_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.911940968190483,Suspension,RPMI; 10% FBS,KMS-27,multiple_myeloma,,,11
+127399_SOFT_TISSUE,2,-0.9878608977778264,Adherent,D20+1mM Sodium pyruvate,1273/99,soft_tissue,synovial_sarcoma,,51.9
+KPNYN_AUTONOMIC_GANGLIA,3,-0.9502601959209148,Adherent,RPMI-1640: 10%FBS,,peripheral_nervous_system,neuroblastoma,,47.1
+LI7_LIVER,2,-1.1040405986001238,Adherent,RPMI; 10% FBS,LI7,liver,,,6.9
+NCIH2030_LUNG,3,-1.2680515917314408,Adherent,RPMI; 10% FBS,NCI-H2030,lung,lung_NSC,lung_adenocarcinoma,14.2
+RERFLCAD1_LUNG,4,-1.4652299406534646,Adherent,RPMI; 10% FBS,RERF-LC-Ad1,lung,lung_NSC,lung_adenocarcinoma,12.8
+NUGC3_STOMACH,2,-2.3167346129383883,Adherent,RPMI; 10% FBS,NUGC-3,gastric,gastric_adenocarcinoma,,16.2
+ONS76_CENTRAL_NERVOUS_SYSTEM,2,-1.8065158633424272,Adherent,RPMI; 10% FBS,ONS76,central_nervous_system,medulloblastoma,non-MYC,6.5
+SH10TC_STOMACH,2,-0.9150442221367232,Adherent,RPMI-1640: 10%FBS,SH10TC,gastric,gastric_adenocarcinoma,,29.1
+HT115_LARGE_INTESTINE,3,-1.8494165131260971,Adherent,"DMEM;15%FBS, 2mMGlutamax-1",,colorectal,,,29.8
+TC138_BONE,2,-0.9684028973557092,Light Adherent or Suspension,"RPMI-1640: 90.0%; 10%heat inactive FBS,2mMGlutamax",,bone,Ewing_sarcoma,,33.3
+NCIH1299_LUNG,2,-1.1882679904475288,Adherent,RPMI; 10% FBS,NCI-H1299,lung,lung_NSC,lung_large,35.2
+EKVX_LUNG,2,-1.3943306330080905,Adherent,RPMI-1640: 90.0%,EKVX,lung,lung_NSC,lung_adenocarcinoma,17.7
+NCIH2170_LUNG,3,-1.2041671130653444,Adherent,RPMI;10% FBS;,NCI-H2170,lung,lung_NSC,lung_squamous,14.4
+CHP212_AUTONOMIC_GANGLIA,4,-1.6972741476014992,Adherent,EMEM:F12 (1:1); 10% FBS,,peripheral_nervous_system,neuroblastoma,,54.8
+RPMI7951_SKIN,2,-0.968916445009255,Adherent,RPMI-1640; 10%FBS,RPMI7951,skin,melanoma,,18.8
+JHH7_LIVER,2,-1.7622661459469675,Adherent,William's E medium with 10% FCS,JHH7_LIVER,liver,,,20.6
+COV434_OVARY,3,-2.1477576317154043,Adherent,DMEM; 10% FBS; 2mM L-glutamine,COV434,ovary,ovary_adenocarcinoma,ovary_endometrioid,57
+BICR22_UPPER_AERODIGESTIVE_TRACT,2,-1.5201801292675468,Adherent,DMEM; 10% FBS; 2mM Glutamine; 0.4ug/ml hydrocortisone,BICR 22,upper_aerodigestive,upper_aerodigestive_squamous,,5.6
+LUDLU1_LUNG,2,-1.1993862649924951,Adherent,RPMI; 10% FBS,LUDLU-1,lung,lung_NSC,lung_squamous,13.2
+BIN67_OVARY,2,-1.4775380842344945,Adherent,"20% FBS, 40% DMEM, 40% DMEM/F12",BIN-67,rhabdoid,,,57
+PANC0403_PANCREAS,4,-1.3355213279014293,,"RPMI-1640, 15%FBS, 20ug/ml human insulin",,pancreas,,,16.9
+GCIY_STOMACH,2,-2.0859247867992714,Adherent,MEM; 15% FBS,GCIY,gastric,gastric_adenocarcinoma,,10.4
+HT1376_URINARY_TRACT,2,-0.6852519177426797,Adherent,EMEM; 10% FBS,HT1376_URINARY_TRACT,urinary_tract,,,48.6
+NCIH2452_PLEURA,2,-1.1505577132006748,Adherent,RPMI; 10% FBS,NCI-H2452,mesothelioma,,,14.3
+NALM6_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.9237428020818543,Suspensions,RPMI; 15% FBS,Nalm-6,leukemia,B-cell_ALL,,13.4
+HT55_LARGE_INTESTINE,3,-1.0987330202102612,Adherent,E20+Glu+NEAA,HT55,colorectal,,,30.6
+253J_URINARY_TRACT,1,-1.8356149174255847,Adherent,DMEM: 90.0%,253J,urinary_tract,,,11
+T98G_CENTRAL_NERVOUS_SYSTEM,2,-0.8056766570433879,Adherent,EMEM; 10% FBS,T98G,central_nervous_system,glioma,glioblastoma,20.4
+KYSE270_OESOPHAGUS,2,-1.6126002265902135,Adherent,RPMI 1640:F12 (1:1): 90.0%,KYSE270_OESOPHAGUS,esophagus,esophagus_squamous,,15
+OVTOKO_OVARY,2,-0.9792920640872854,Adherent,RPMI;10% FBS;,OVTOKO,ovary,ovary_adenocarcinoma,ovary_clear_cell,42.9
+LS180_LARGE_INTESTINE,2,-2.199361749853729,Adherent,"EMEM, 10%FBS",LS180,colorectal,colorectal_MSI,,47
+GI1_CENTRAL_NERVOUS_SYSTEM,1,-1.3777175503136867,Adherent,DMEM: 90.0%,GI1_CENTRAL_NERVOUS_SYSTEM,central_nervous_system,glioma,,4.1
+MDAMB415_BREAST,3,-1.1311112881117371,Adherent,L-15 15% FBS ;2mM Glutamine ;10mcg/mL Insulin ;10mcg/mL Glutathione,MDA-MB-415,breast,ERpos,,8
+SNU213_PANCREAS,4,-1.0260448903100334,Adherent,"RPMI-1640: 10%FBS, 2mM L-glutamine",,pancreas,,,14.2
+DETROIT562_UPPER_AERODIGESTIVE_TRACT,2,-0.8571983910982395,,EMEM: 10%FBS,DETROIT562,upper_aerodigestive,upper_aerodigestive_squamous,,18.6
+HEYA8_OVARY,3,-1.7167419639251815,Adherent,RPMI; 10% FBS,Hey-A8,ovary,ovary_adenocarcinoma,ovary_low_grade_serous,7.1
+KYSE410_OESOPHAGUS,2,-1.4724649050914138,Adherent,RPMI-1640: 90.0%,KYSE410_OESOPHAGUS,esophagus,esophagus_squamous,,8.7
+COLO201_LARGE_INTESTINE,2,-1.4453529070035172,Mixed adherence,RPMI-1640: 90.0%,COLO201,colorectal,,,16.6
+OUMS23_LARGE_INTESTINE,3,-1.1447619777137257,Adherent,DMEM; 10% FBS;,,colorectal,,,20.9
+697_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.373472540739353,Suspension,RPMI; 20% heat inactive FBS,697,leukemia,B-cell_ALL,,48
+BFTC909_KIDNEY,2,-0.990112934920342,Adherent,DMEM;10 % FBS;,BFTC909,kidney,,,38.8
+HS729_SOFT_TISSUE,2,-1.2795519804149822,Adherent,DMEM; 5% FBS,HS729,rhabdomyosarcoma,,,28
+NCIH1693_LUNG,4,-1.183480916488349,Adherent,RPMI; 10% FBS,NCI-H1693,lung,lung_NSC,lung_adenocarcinoma,14.1
+HARA_LUNG,2,-1.3552858521812383,Adherent,RPMI; 10% FBS,HARA,lung,lung_NSC,lung_squamous,39.3
+LK2_LUNG,3,-1.6937160911864275,Adherent,DMEM; 10% FBS;,LK-2,lung,lung_NSC,lung_squamous,18.5
+GAMG_CENTRAL_NERVOUS_SYSTEM,2,-1.041439536440053,Adherent,"DMEM, 10%FBS, 2mM Glutamax-1",GAMG,central_nervous_system,glioma,glioblastoma,8.9
+ASPC1_PANCREAS,4,-0.8054426158588155,Adherent,RPMI; 10% FBS,AsPC-1,pancreas,,,57.2
+PEDS005TPFAD_KIDNEY,2,-1.5129300395916387,Adherent,RPMI; 10% FBS,Peds005T_PF_AD,kidney,,,10.2
+KLE_ENDOMETRIUM,2,-0.9279922466640544,Adherent,"DMEM/F-12 (1:1): 900%, 10%FBS",KLE_ENDOMETRIUM,uterus,uterus_endometrium,,44
+MV411_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-2.47538573277418,Suspension,IMDM; 10% FBS,MV4;11,leukemia,AML,,11
+COLO792_SKIN,2,-1.4725495495184822,Adherent,RPMI;10% FBS;,COLO 792,skin,melanoma,,36.8
+IMR32_AUTONOMIC_GANGLIA,3,-1.3384453086850063,Adherent,"EMEM, 10%FBS",,peripheral_nervous_system,neuroblastoma,,39.9
+JHOC5_OVARY,3,-1.5781874794975963,Adherent,DMEM:F12 (1:1); 10% FBS; 0.1mM NEAA,JHOC-5,ovary,ovary_adenocarcinoma,ovary_clear_cell,17.9
+OVCAR5_OVARY,2,-1.0683837963964138,Adherent,"RPMI-1640: 95.0%, 5% FBS",,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,16.5
+MDAMB436_BREAST,3,-1.1290366381150292,Semi-adherent,RPMI; 10% FBS; 16ug/ml glutathione,MDA-MB-436,breast,TNBC,,47.3
+786O_KIDNEY,3,-1.3456977695606025,Adherent,RPMI; 10% FBS,786-O,kidney,,,36.5
+SNU1105_CENTRAL_NERVOUS_SYSTEM,2,-1.0803892656001264,Adherent,RPMI; 10% FBS,SNU-1105,central_nervous_system,glioma,glioblastoma,27.4
+HCC1143_BREAST,2,-1.648933409976071,Adherent,RPMI; 10% FBS,HCC1143,breast,TNBC,,16
+KYSE180_OESOPHAGUS,2,-1.794746883235525,Adherent,RPMI; 10% FBS,KYSE180,esophagus,esophagus_squamous,,32.1
+RH30_SOFT_TISSUE,2,-0.8415920290783679,Adherent,RPMI;10% FBS;,RH30,rhabdomyosarcoma,,,38.5
+UW228_CENTRAL_NERVOUS_SYSTEM,1,-1.5164574363880314,Adherent,D:F10+Glu,UW228,central_nervous_system,medulloblastoma,non-MYC,12.3
+CAKI2_KIDNEY,2,-0.8739871444084646,Adherent,McCoy's 5A;10% FBS;,CAKI2,kidney,,,44.5
+NCIH2087_LUNG,4,-1.6187712840417336,Adherent,RPMI; 5% FBS,NCI-H2087,lung,lung_NSC,lung_adenocarcinoma,27.7
+TUHR14TKB_KIDNEY,2,-0.91475621959804,Adherent,RPMI; 10% FBS,TUHR14TKB,kidney,,,37
+TF1_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,3,-1.3042345523764545,Suspension,RPMI-1640: 10%FBS; 2ng/ml GM-CSF,TF1,leukemia,AML,,good
+CL40_LARGE_INTESTINE,2,-1.2023674297785043,Adherent,DMEM/F-12 (1:1): 80.0%,CL40,colorectal,,,23.9
+SNU840_OVARY,3,-1.242276776398388,Adherent,RPMI; 10% FBS,SNU-840,ovary,ovary_non_epithelial,Brenner_tumor,45.9
+COV318_OVARY,2,-1.3446536542374603,Adherent,EMEM; 10% FBS,COV318,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,28.3
+BFTC905_URINARY_TRACT,2,-1.3698250315047458,Adherent,DMEM: 90.0%,BFTC905,urinary_tract,,,38.8
+KURAMOCHI_OVARY,3,-1.0769681176855337,Adherent,RPMI; 10% FBS,KURAMOCHI,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,47.9
+MSTO211H_PLEURA,2,-2.5507583479914246,Adherent,RPMI-1640: 90.0%,MSTO211H,mesothelioma,,,19.5
+SNU349_KIDNEY,2,-1.07788300077324,Adherent,RPMI;10% FBS;,SNU349,kidney,,,26.8
+PECAPJ41CLONED2_UPPER_AERODIGESTIVE_TRACT,2,-1.6446674825090593,Adherent,"Iscove (IMDM): 90.0%, GLUTAMAX",PECAPJ41CLONED2,upper_aerodigestive,upper_aerodigestive_squamous,,14
+SR786_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,1,-0.9025473692754802,Suspension,RPMI 1640 + 15% FBS,"SR786, SR",lymphoma,ALCL,,10.4
+SKNAS_AUTONOMIC_GANGLIA,3,-1.6301222023391788,Adherent,DMEM; 10% FBS; NEAA,,peripheral_nervous_system,neuroblastoma,,16.2
+A549_LUNG,4,-1.9387884858666908,Adherent,DMEM; 10% FBS,A549,lung,lung_NSC,lung_adenocarcinoma,17.2
+ISTMES2_PLEURA,2,-2.655746114858732,Adherent,"DMEM: 90.0%; L-glutamine: 2.0 mM, NEAA( Non-essential Amino Acids): 5.0 ml",ISTMES2,mesothelioma,,,36.2
+NCIH1666_LUNG,2,-1.4075178929619283,Mixed Adherent and Suspension,ACL4 (FBS free),NCI-H1666,lung,lung_NSC,lung_adenocarcinoma,5.8
+INA6_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,1,-1.7480850808710233,Suspension,RPMI; 20%FBS; 5 ng/mL IL-6,INA-6,multiple_myeloma,,,1.5
+A3KAW_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.7493034331496515,Suspension,RPMI;10% FBS;,A3/KAW,lymphoma,DLBCL,,28.2
+F5_CENTRAL_NERVOUS_SYSTEM,2,-2.3450075232842216,Adherent,RPMI; 10% FBS,F5,central_nervous_system,meningioma,,44.7
+SNGM_ENDOMETRIUM,2,-1.7522428124409597,Adherent,Ham F-12: 80.0%,SNGM_ENDOMETRIUM,uterus,uterus_endometrium,,9.8
+RKO_LARGE_INTESTINE,3,-1.5848296290462252,Adherent,MEM10,RKO,colorectal,colorectal_MSI,,50.9
+MORCPR_LUNG,3,-1.9274092591990235,Adherent,RPMI; 10% FBS,MOR/CPR,lung,lung_NSC,lung_adenocarcinoma,22.6
+JHOS4_OVARY,3,-1.24448151393493,Adherent,DMEM:F12 (1:1); 10% FBS,JHOS-4,ovary,ovary_adenocarcinoma,ovary_high_grade_serous,27.1
+CW9019_SOFT_TISSUE,2,-1.0534322148209951,Adherent,DMEM HG; 10%FBS,CW9019,rhabdomyosarcoma,,,19.3
+NCIH441_LUNG,4,-2.2273135415265606,Adherent,RPMI; 10% FBS,NCI-H441,lung,lung_NSC,lung_adenocarcinoma,19
+AGS_STOMACH,2,-1.6696030154083354,Adherent,F12K; 10% FBS,AGS,gastric,gastric_adenocarcinoma,,16.3
+KMS34_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,1,-2.036052089969442,Suspension,RPMI; 10% FBS,KMS-34,multiple_myeloma,,,2.6
+COLO800_SKIN,2,-1.1179684584135945,Adherent,RPMI-1640: 10%FBS,COLO-800,skin,melanoma,,23.2
+GB1_CENTRAL_NERVOUS_SYSTEM,2,-1.8235062306265604,Adherent,EMEM; 10% FBS,GB-1,central_nervous_system,glioma,glioblastoma,11
+RMUGS_OVARY,2,-0.9424419169090884,Adherent,HamsF12; 10% FBS,RMUG-S,ovary,ovary_adenocarcinoma,ovary_mucinous,35.3
+NCIH2023_LUNG,4,-1.406509987224929,Adherent,DMEM:F12 (1:1); 5% FBS; 0.005 mgml Insulin; 0.01 mgml transferrin; 30 nM sodium selenite; 10 nM hydrocortisone; 10 nM beta estradiol; 10 mM HEPES; 2 mM L-glutamine,NCI-H2023,lung,lung_NSC,lung_adenocarcinoma,15.2
+SKNMC_BONE,3,-0.8644646501289902,Adherent,EMEM: 10%FBS,SK-N-MC,bone,Ewing_sarcoma,,34.7
+JHH1_LIVER,2,-1.465031471744222,Adherent,William's E Medium; 10%FBS,JHH1,liver,,,37.3
+MDST8_LARGE_INTESTINE,3,-1.7381755339045568,Adherent,DMEM; 10% FBS;2mM Glutamine,,colorectal,,,27.8
+MDAMB453_BREAST,3,-1.2083841920078828,Adherent,RPMI; 10% FBS,MDA-MB-453,breast,TNBC,,18
+SUPM2_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,4,-2.3266419321671186,Suspension,RPMI 1640 + 20% FBS,,lymphoma,ALCL,,46.7
+MHHNB11_AUTONOMIC_GANGLIA,3,-1.9232378063561304,Semi-Adherent,RPMI-1640: 10%FBS,,peripheral_nervous_system,neuroblastoma,,39.7
+NOMO1_HAEMATOPOIETIC_AND_LYMPHOID_TISSUE,2,-1.3806345672436322,Suspension,RPMI; 10% FBS,NOMO-1,leukemia,AML,,17.8
+NCIH2291_LUNG,3,-1.1533762551940614,Adherent,RPMI; 10% FBS,NCI-H2291,lung,lung_NSC,lung_adenocarcinoma,29.7
+EFM19_BREAST,2,-1.3205788174865771,Adherent,RPMI; 10% FBS,EFM-19,breast,,,32
+YH13_CENTRAL_NERVOUS_SYSTEM,2,-1.3925089320742492,Adherent,EMEM: 80.0%; 20%FBS,YH13,central_nervous_system,glioma,glioblastoma,48.2
+ESS1_ENDOMETRIUM,2,-1.272957320195078,Adherent,RPMI-1640: 20%FBS,ESS-1,uterus,uterus_endometrium,,41.4
+RT11284_URINARY_TRACT,2,-1.720555011568793,Adherent,EMEM; 10% FBS;2mMGlutamax; 1%NEAA,,urinary_tract,,,37.6
+WM793_SKIN,2,-1.5343522655169313,Adherent,RPMI-1640: 10%FBS,WM-793,skin,melanoma,,45
+BICR31_UPPER_AERODIGESTIVE_TRACT,2,-1.08355725553435,Adherent,DMEM; 10% FBS,BICR31,upper_aerodigestive,upper_aerodigestive_squamous,,44.3
+S117_SOFT_TISSUE,2,-0.726197013186615,Adherent,RPMI; 10% FBS,S117,thyroid,thyroid_sarcoma,,23.6
+ES2_OVARY,3,-1.4712219476235515,Adherent,RPMI;10% FBS;,ES-2,ovary,ovary_adenocarcinoma,ovary_clear_cell,5.9
+BICR16_UPPER_AERODIGESTIVE_TRACT,2,-0.9672776951072952,Adherent,DMEM;10% FBS;,BICR16,upper_aerodigestive,upper_aerodigestive_squamous,,26.3
+42MGBA_CENTRAL_NERVOUS_SYSTEM,2,-1.3343734563702052,Adherent,RPMI 1640 + EMEM (1:1): 80.0%,42MGBA,central_nervous_system,glioma,astrocytoma,27.4

@@ -7,6 +7,8 @@ output:
     toc: true
     toc_float: true
     keep_md: true
+editor_options: 
+  chunk_output_type: inline
 ---
 
 
@@ -53,20 +55,17 @@ for(p in requiredPackages){
 
 
 ```r
-compoundname=read.csv2(here("data","compound_names.txt"),header=TRUE,sep="\t")
-# CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-drugcell_all=read.csv2(here("data","drugcell_all.txt"),header=FALSE,sep="\t")
-
-# table(grepl("CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO",drugcell_all[,2],fixed=TRUE))
+compoundname=read.csv2(here::here("data","compound_names.txt"),header=TRUE,sep="\t")
+drugcell_all=read.csv2(here::here("data","drugcell_all.txt"),header=FALSE,sep="\t")
+cellname=read.csv2(here::here("data","cell2ind.txt"),header=FALSE,sep="\t")
+cellmutation=read.csv2(here::here("data","cell2mutation.txt"),header=FALSE,sep=",")
+genename=read.csv2(here::here("data","gene2ind.txt"),header=FALSE,sep="\t")
 ```
 
 # 2. Plot distribution of mutations per cell line as Fig S1E
 ## plot Fig S1E, Histogram of the number of mutations per cell line used for model training, matched figure S1E
 
 ```r
-cellname=read.csv2(here("data","cell2ind.txt"),header=FALSE,sep="\t")
-cellmutation=read.csv2(here("data","cell2mutation.txt"),header=FALSE,sep=",")
-genename=read.csv2(here("data","gene2ind.txt"),header=FALSE,sep="\t")
 distribution_cellmutation=as.data.frame(apply(cellmutation,1,FUN=sum))
 distribution_drugmutation=as.data.frame(apply(cellmutation,2,FUN=sum))
 
@@ -134,7 +133,7 @@ length(table(drugcell_pacilitaxel2[,1]))
 ```
 
 
-## 3.2 selumetinib: One mono test, and several combinations for selumetinib, 769 cell lines doesn't match Figure 3B's n=382
+## 3.2 selumetinib: One mono test, and several combinations for selumetinib, 788 pairs of testing, 769 cell lines, both don't match Figure 3B's n=382
 
 ```r
 # 8948 of combinations involved selumetinib
@@ -148,54 +147,18 @@ table(grepl("CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO",drugcell_all
 ```
 
 ```r
-compoundname[which(grepl("selumetinib",compoundname[,3],ignore.case = TRUE)),]
+# View(compoundname[which(grepl("selumetinib",compoundname[,3],ignore.case = TRUE)),])
+
+compoundname[which(compoundname[,3]=="Selumetinib"),]
 ```
 
 ```
-##     number
-## 89      88
-## 148    147
-## 354    353
-## 355    354
-## 382    381
-## 391    390
-## 527    526
-## 566    565
-## 578    577
-## 590    589
-## 605    604
-## 626    625
-##                                                                                                                                                                                            SMILE
-## 89                                                                   CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.CS(=O)(=O)N1CCN(CC1)CC2=CC3=C(S2)C(=NC(=N3)C4=C5C=NNC5=CC=C4)N6CCOCC6
-## 148                                                                         CC(C)N1CCC(CC1)NC2=NC(=NC3=CC(=C(C=C32)OC)OCCCN4CCCC4)C5CCCCC5.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 354                                                                      CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.C1CC(C1)(C2=CC=C(C=C2)C3=C(C=C4C(=N3)C=CN5C4=NNC5=O)C6=CC=CC=C6)N
-## 355                                                                                                                                        CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 382                                                                CCCS(=O)(=O)NC1=C(C(=C(C=C1)F)C(=O)C2=CNC3=NC=C(C=C23)C4=CC=C(C=C4)Cl)F.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 391 CC1(CCC(=C(C1)CN2CCN(CC2)C3=CC=C(C=C3)C(=O)NS(=O)(=O)C4=CC(=C(C=C4)N[C@H](CCN5CCOCC5)CSC6=CC=CC=C6)S(=O)(=O)C(F)(F)F)C7=CC=C(C=C7)Cl)C.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 527                                                                                          CC1=C(C(CCC1)(C)C)/C=C/C(=C/C=C/C(=C/CO)/C)/C.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 566                                                                  CC1=C(SC2=C1C(=N[C@H](C3=NN=C(N32)C)CC(=O)OC(C)(C)C)C4=CC=C(C=C4)Cl)C.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 578                                                                                             CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.COC1=CC(=CC(=C1OC)OC)/C=C/C(=O)N2CCC=CC2=O
-## 590                                            CC(C)N(CCCNC(=O)NC1=CC=C(C=C1)C(C)(C)C)C[C@@H]2[C@H]([C@H]([C@@H](O2)N3C=CC4=C3N=CN=C4N)O)O.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 605                                                                                                       CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.C1=CC=C(C=C1)NC(=O)CCCCCCC(=O)NO
-## 626                                                                                             CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.C1[C@@H]([C@H](O[C@H]1N2C=NC(=NC2=O)N)CO)O
-##                             Name
-## 89        Selumetinib + GDC-0941
-## 148        UNC0638 + Selumetinib
-## 354        Selumetinib + MK-2206
-## 355                  Selumetinib
-## 382    Vemurafenib + Selumetinib
-## 391     Navitoclax + Selumetinib
-## 527        retinol + Selumetinib
-## 566            JQ1 + Selumetinib
-## 578 Selumetinib + Piperlongumine
-## 590      EPZ004777 + Selumetinib
-## 605     Selumetinib + Vorinostat
-## 626     Selumetinib + Decitabine
+##     number                                                 SMILE        Name
+## 355    354 CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO Selumetinib
 ```
 
 ```r
 # Selumetinib at row 355, has 788 pairs, 769 cell lines, dosen't match Figure 3B's n=382
-
 
 length(which(drugcell_all[,2]=="CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO"))
 ```
@@ -213,7 +176,7 @@ length(table(drugcell_selumetinib[,1]))
 ## [1] 769
 ```
 
-## 3.3 JQ1: one mono, and several combinations for JQ1, mono is row 661, 839 doesn't match Figure 3D's n=860
+## 3.3 JQ1: one mono, and several combinations for JQ1, mono is row 661, 849 pairs, 808 cell lines don't match Figure 3D's n=860, for combinations, 5279 pairs, 839 cell lines don't match either.
 
 ```r
 compoundname[which(grepl("JQ1",compoundname[,3],ignore.case = TRUE)),]
@@ -257,8 +220,8 @@ length(which(drugcell_all[,2]=="CC1=C(SC2=C1C(=N[C@H](C3=NN=C(N32)C)CC(=O)OC(C)(
 ```
 
 ```r
-drugcell_JQ1=drugcell_all[(which(drugcell_all[,2]=="CC1=C(SC2=C1C(=N[C@H](C3=NN=C(N32)C)CC(=O)OC(C)(C)C)C4=CC=C(C=C4)Cl)C")),]
-length(table(drugcell_JQ1[,1]))
+drugcell_JQ1_mono=drugcell_all[(which(drugcell_all[,2]=="CC1=C(SC2=C1C(=N[C@H](C3=NN=C(N32)C)CC(=O)OC(C)(C)C)C4=CC=C(C=C4)Cl)C")),]
+length(table(drugcell_JQ1_mono[,1]))
 ```
 
 ```
@@ -266,9 +229,19 @@ length(table(drugcell_JQ1[,1]))
 ```
 
 ```r
+table(table(drugcell_JQ1_mono[,1]))
+```
+
+```
+## 
+##   1   2 
+## 767  41
+```
+
+```r
 # 5279 pairs, 839 cell lines involved JQ1 in total, still doesn't match 860
 JQ1="CC1=C\\(SC2=C1C\\(=N\\[C@H\\]\\(C3=NN=C\\(N32\\)C\\)CC\\(=O\\)OC\\(C\\)\\(C\\)C\\)C4=CC=C\\(C=C4\\)Cl\\)C"
-table(grepl(JQ1,drugcell_all[,2]))
+table(grepl(JQ1,drugcell_all[,2],ignore.case = TRUE))
 ```
 
 ```
@@ -291,7 +264,7 @@ length(table(drugcell_JQ1_all[,1]))
 
 # 4. Check number of cell lines with specific gene mutation
 
-## 4.1 BRAF mutations, but 175 doesn't match with figure 3A's n=229
+## 4.1 BRAF mutations, but 175 doesn't match with figure 3A's n=229, but row 329, gene named CACNA1B have the same number
 
 
 ```r
@@ -306,6 +279,7 @@ genename[grepl("BRAF",genename[,2])==TRUE,]
 
 ```r
 # but it only has 175 mutated cell lines, not 229
+
 table(data.frame(cellmutation[,288]))
 ```
 
@@ -315,10 +289,27 @@ table(data.frame(cellmutation[,288]))
 ## 1050  175
 ```
 
+```r
+which(colSums(cellmutation)==229)
+```
+
+```
+## V329 
+##  329
+```
+
+```r
+genename[329,]
+```
+
+```
+##      V1      V2
+## 329 328 CACNA1B
+```
+
 
 
 ## 4.2 EGFR,BRAF,LKB1 mutations, 311 in total, still doesn't match with Fig 3C's 460
-
 
 ```r
 # 802
@@ -363,12 +354,12 @@ table(rowSums(data.frame(cellmutation[,c(288,802,1513)])))
 ## [1] 311
 ```
 
+
 # 5. Inspect cell2mutation_fixed.txt, and find that this dataset has 1224 cell ines, which is lack first cell line compared with 1225 of cell2mutation.txt. But still get 311 as last section
 
 
 ```r
-cellmutation2=read.csv2(here("data","cell2mutation_fixed.txt"),header=FALSE,sep=",")
-
+cellmutation2=read.csv2(here::here("data","cell2mutation_fixed.txt"),header=FALSE,sep=",")
 
 compare_0.001=function(x){return(x>0.001)}
 cellmutation3=data.frame(sapply(cellmutation2,FUN=compare_0.001))

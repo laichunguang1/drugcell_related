@@ -65,6 +65,7 @@ if (window.hljs) {
 
 
 
+
 <style type="text/css">
 .main-container {
   max-width: 940px;
@@ -85,6 +86,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -269,21 +273,18 @@ for(p in requiredPackages){
 </div>
 <div id="load-drug-infomation" class="section level2">
 <h2>1.2 Load drug infomation</h2>
-<pre class="r"><code>compoundname=read.csv2(here(&quot;data&quot;,&quot;compound_names.txt&quot;),header=TRUE,sep=&quot;\t&quot;)
-# CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-drugcell_all=read.csv2(here(&quot;data&quot;,&quot;drugcell_all.txt&quot;),header=FALSE,sep=&quot;\t&quot;)
-
-# table(grepl(&quot;CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO&quot;,drugcell_all[,2],fixed=TRUE))</code></pre>
+<pre class="r"><code>compoundname=read.csv2(here::here(&quot;data&quot;,&quot;compound_names.txt&quot;),header=TRUE,sep=&quot;\t&quot;)
+drugcell_all=read.csv2(here::here(&quot;data&quot;,&quot;drugcell_all.txt&quot;),header=FALSE,sep=&quot;\t&quot;)
+cellname=read.csv2(here::here(&quot;data&quot;,&quot;cell2ind.txt&quot;),header=FALSE,sep=&quot;\t&quot;)
+cellmutation=read.csv2(here::here(&quot;data&quot;,&quot;cell2mutation.txt&quot;),header=FALSE,sep=&quot;,&quot;)
+genename=read.csv2(here::here(&quot;data&quot;,&quot;gene2ind.txt&quot;),header=FALSE,sep=&quot;\t&quot;)</code></pre>
 </div>
 </div>
 <div id="plot-distribution-of-mutations-per-cell-line-as-fig-s1e" class="section level1">
 <h1>2. Plot distribution of mutations per cell line as Fig S1E</h1>
 <div id="plot-fig-s1e-histogram-of-the-number-of-mutations-per-cell-line-used-for-model-training-matched-figure-s1e" class="section level2">
 <h2>plot Fig S1E, Histogram of the number of mutations per cell line used for model training, matched figure S1E</h2>
-<pre class="r"><code>cellname=read.csv2(here(&quot;data&quot;,&quot;cell2ind.txt&quot;),header=FALSE,sep=&quot;\t&quot;)
-cellmutation=read.csv2(here(&quot;data&quot;,&quot;cell2mutation.txt&quot;),header=FALSE,sep=&quot;,&quot;)
-genename=read.csv2(here(&quot;data&quot;,&quot;gene2ind.txt&quot;),header=FALSE,sep=&quot;\t&quot;)
-distribution_cellmutation=as.data.frame(apply(cellmutation,1,FUN=sum))
+<pre class="r"><code>distribution_cellmutation=as.data.frame(apply(cellmutation,1,FUN=sum))
 distribution_drugmutation=as.data.frame(apply(cellmutation,2,FUN=sum))
 
 
@@ -322,55 +323,19 @@ drugcell_pacilitaxel2=drugcell_all[drugcell_all[,2]==&quot;CC1=C2[C@H](C(=O)[C@@
 length(table(drugcell_pacilitaxel2[,1]))</code></pre>
 <pre><code>## [1] 758</code></pre>
 </div>
-<div id="selumetinib-one-mono-test-and-several-combinations-for-selumetinib-769-cell-lines-doesnt-match-figure-3bs-n382" class="section level2">
-<h2>3.2 selumetinib: One mono test, and several combinations for selumetinib, 769 cell lines doesn’t match Figure 3B’s n=382</h2>
+<div id="selumetinib-one-mono-test-and-several-combinations-for-selumetinib-788-pairs-of-testing-769-cell-lines-both-dont-match-figure-3bs-n382" class="section level2">
+<h2>3.2 selumetinib: One mono test, and several combinations for selumetinib, 788 pairs of testing, 769 cell lines, both don’t match Figure 3B’s n=382</h2>
 <pre class="r"><code># 8948 of combinations involved selumetinib
 table(grepl(&quot;CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO&quot;,drugcell_all[,2],fixed=TRUE))</code></pre>
 <pre><code>## 
 ##  FALSE   TRUE 
 ## 500346   8948</code></pre>
-<pre class="r"><code>compoundname[which(grepl(&quot;selumetinib&quot;,compoundname[,3],ignore.case = TRUE)),]</code></pre>
-<pre><code>##     number
-## 89      88
-## 148    147
-## 354    353
-## 355    354
-## 382    381
-## 391    390
-## 527    526
-## 566    565
-## 578    577
-## 590    589
-## 605    604
-## 626    625
-##                                                                                                                                                                                            SMILE
-## 89                                                                   CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.CS(=O)(=O)N1CCN(CC1)CC2=CC3=C(S2)C(=NC(=N3)C4=C5C=NNC5=CC=C4)N6CCOCC6
-## 148                                                                         CC(C)N1CCC(CC1)NC2=NC(=NC3=CC(=C(C=C32)OC)OCCCN4CCCC4)C5CCCCC5.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 354                                                                      CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.C1CC(C1)(C2=CC=C(C=C2)C3=C(C=C4C(=N3)C=CN5C4=NNC5=O)C6=CC=CC=C6)N
-## 355                                                                                                                                        CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 382                                                                CCCS(=O)(=O)NC1=C(C(=C(C=C1)F)C(=O)C2=CNC3=NC=C(C=C23)C4=CC=C(C=C4)Cl)F.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 391 CC1(CCC(=C(C1)CN2CCN(CC2)C3=CC=C(C=C3)C(=O)NS(=O)(=O)C4=CC(=C(C=C4)N[C@H](CCN5CCOCC5)CSC6=CC=CC=C6)S(=O)(=O)C(F)(F)F)C7=CC=C(C=C7)Cl)C.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 527                                                                                          CC1=C(C(CCC1)(C)C)/C=C/C(=C/C=C/C(=C/CO)/C)/C.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 566                                                                  CC1=C(SC2=C1C(=N[C@H](C3=NN=C(N32)C)CC(=O)OC(C)(C)C)C4=CC=C(C=C4)Cl)C.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 578                                                                                             CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.COC1=CC(=CC(=C1OC)OC)/C=C/C(=O)N2CCC=CC2=O
-## 590                                            CC(C)N(CCCNC(=O)NC1=CC=C(C=C1)C(C)(C)C)C[C@@H]2[C@H]([C@H]([C@@H](O2)N3C=CC4=C3N=CN=C4N)O)O.CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO
-## 605                                                                                                       CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.C1=CC=C(C=C1)NC(=O)CCCCCCC(=O)NO
-## 626                                                                                             CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO.C1[C@@H]([C@H](O[C@H]1N2C=NC(=NC2=O)N)CO)O
-##                             Name
-## 89        Selumetinib + GDC-0941
-## 148        UNC0638 + Selumetinib
-## 354        Selumetinib + MK-2206
-## 355                  Selumetinib
-## 382    Vemurafenib + Selumetinib
-## 391     Navitoclax + Selumetinib
-## 527        retinol + Selumetinib
-## 566            JQ1 + Selumetinib
-## 578 Selumetinib + Piperlongumine
-## 590      EPZ004777 + Selumetinib
-## 605     Selumetinib + Vorinostat
-## 626     Selumetinib + Decitabine</code></pre>
-<pre class="r"><code># Selumetinib at row 355, has 788 pairs, 769 cell lines, dosen&#39;t match Figure 3B&#39;s n=382
+<pre class="r"><code># View(compoundname[which(grepl(&quot;selumetinib&quot;,compoundname[,3],ignore.case = TRUE)),])
 
+compoundname[which(compoundname[,3]==&quot;Selumetinib&quot;),]</code></pre>
+<pre><code>##     number                                                 SMILE        Name
+## 355    354 CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO Selumetinib</code></pre>
+<pre class="r"><code># Selumetinib at row 355, has 788 pairs, 769 cell lines, dosen&#39;t match Figure 3B&#39;s n=382
 
 length(which(drugcell_all[,2]==&quot;CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)C(=O)NOCCO&quot;))</code></pre>
 <pre><code>## [1] 788</code></pre>
@@ -378,8 +343,8 @@ length(which(drugcell_all[,2]==&quot;CN1C=NC2=C1C=C(C(=C2F)NC3=C(C=C(C=C3)Br)Cl)
 length(table(drugcell_selumetinib[,1]))</code></pre>
 <pre><code>## [1] 769</code></pre>
 </div>
-<div id="jq1-one-mono-and-several-combinations-for-jq1-mono-is-row-661-839-doesnt-match-figure-3ds-n860" class="section level2">
-<h2>3.3 JQ1: one mono, and several combinations for JQ1, mono is row 661, 839 doesn’t match Figure 3D’s n=860</h2>
+<div id="jq1-one-mono-and-several-combinations-for-jq1-mono-is-row-661-849-pairs-808-cell-lines-dont-match-figure-3ds-n860-for-combinations-5279-pairs-839-cell-lines-dont-match-either." class="section level2">
+<h2>3.3 JQ1: one mono, and several combinations for JQ1, mono is row 661, 849 pairs, 808 cell lines don’t match Figure 3D’s n=860, for combinations, 5279 pairs, 839 cell lines don’t match either.</h2>
 <pre class="r"><code>compoundname[which(grepl(&quot;JQ1&quot;,compoundname[,3],ignore.case = TRUE)),]</code></pre>
 <pre><code>##     number
 ## 44      43
@@ -409,12 +374,16 @@ length(table(drugcell_selumetinib[,1]))</code></pre>
 
 length(which(drugcell_all[,2]==&quot;CC1=C(SC2=C1C(=N[C@H](C3=NN=C(N32)C)CC(=O)OC(C)(C)C)C4=CC=C(C=C4)Cl)C&quot;))</code></pre>
 <pre><code>## [1] 849</code></pre>
-<pre class="r"><code>drugcell_JQ1=drugcell_all[(which(drugcell_all[,2]==&quot;CC1=C(SC2=C1C(=N[C@H](C3=NN=C(N32)C)CC(=O)OC(C)(C)C)C4=CC=C(C=C4)Cl)C&quot;)),]
-length(table(drugcell_JQ1[,1]))</code></pre>
+<pre class="r"><code>drugcell_JQ1_mono=drugcell_all[(which(drugcell_all[,2]==&quot;CC1=C(SC2=C1C(=N[C@H](C3=NN=C(N32)C)CC(=O)OC(C)(C)C)C4=CC=C(C=C4)Cl)C&quot;)),]
+length(table(drugcell_JQ1_mono[,1]))</code></pre>
 <pre><code>## [1] 808</code></pre>
+<pre class="r"><code>table(table(drugcell_JQ1_mono[,1]))</code></pre>
+<pre><code>## 
+##   1   2 
+## 767  41</code></pre>
 <pre class="r"><code># 5279 pairs, 839 cell lines involved JQ1 in total, still doesn&#39;t match 860
 JQ1=&quot;CC1=C\\(SC2=C1C\\(=N\\[C@H\\]\\(C3=NN=C\\(N32\\)C\\)CC\\(=O\\)OC\\(C\\)\\(C\\)C\\)C4=CC=C\\(C=C4\\)Cl\\)C&quot;
-table(grepl(JQ1,drugcell_all[,2]))</code></pre>
+table(grepl(JQ1,drugcell_all[,2],ignore.case = TRUE))</code></pre>
 <pre><code>## 
 ##  FALSE   TRUE 
 ## 504015   5279</code></pre>
@@ -425,17 +394,24 @@ length(table(drugcell_JQ1_all[,1]))</code></pre>
 </div>
 <div id="check-number-of-cell-lines-with-specific-gene-mutation" class="section level1">
 <h1>4. Check number of cell lines with specific gene mutation</h1>
-<div id="braf-mutations-but-175-doesnt-match-with-figure-3as-n229" class="section level2">
-<h2>4.1 BRAF mutations, but 175 doesn’t match with figure 3A’s n=229</h2>
+<div id="braf-mutations-but-175-doesnt-match-with-figure-3as-n229-but-row-329-gene-named-cacna1b-have-the-same-number" class="section level2">
+<h2>4.1 BRAF mutations, but 175 doesn’t match with figure 3A’s n=229, but row 329, gene named CACNA1B have the same number</h2>
 <pre class="r"><code># BRAF is row 288
 genename[grepl(&quot;BRAF&quot;,genename[,2])==TRUE,]</code></pre>
 <pre><code>##      V1   V2
 ## 288 287 BRAF</code></pre>
 <pre class="r"><code># but it only has 175 mutated cell lines, not 229
+
 table(data.frame(cellmutation[,288]))</code></pre>
 <pre><code>## 
 ##    0    1 
 ## 1050  175</code></pre>
+<pre class="r"><code>which(colSums(cellmutation)==229)</code></pre>
+<pre><code>## V329 
+##  329</code></pre>
+<pre class="r"><code>genename[329,]</code></pre>
+<pre><code>##      V1      V2
+## 329 328 CACNA1B</code></pre>
 </div>
 <div id="egfrbraflkb1-mutations-311-in-total-still-doesnt-match-with-fig-3cs-460" class="section level2">
 <h2>4.2 EGFR,BRAF,LKB1 mutations, 311 in total, still doesn’t match with Fig 3C’s 460</h2>
@@ -462,8 +438,7 @@ table(rowSums(data.frame(cellmutation[,c(288,802,1513)])))</code></pre>
 </div>
 <div id="inspect-cell2mutation_fixed.txt-and-find-that-this-dataset-has-1224-cell-ines-which-is-lack-first-cell-line-compared-with-1225-of-cell2mutation.txt.-but-still-get-311-as-last-section" class="section level1">
 <h1>5. Inspect cell2mutation_fixed.txt, and find that this dataset has 1224 cell ines, which is lack first cell line compared with 1225 of cell2mutation.txt. But still get 311 as last section</h1>
-<pre class="r"><code>cellmutation2=read.csv2(here(&quot;data&quot;,&quot;cell2mutation_fixed.txt&quot;),header=FALSE,sep=&quot;,&quot;)
-
+<pre class="r"><code>cellmutation2=read.csv2(here::here(&quot;data&quot;,&quot;cell2mutation_fixed.txt&quot;),header=FALSE,sep=&quot;,&quot;)
 
 compare_0.001=function(x){return(x&gt;0.001)}
 cellmutation3=data.frame(sapply(cellmutation2,FUN=compare_0.001))

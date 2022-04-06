@@ -1,0 +1,380 @@
+---
+title: "PCA of DrugCell"
+author: "Chunguang Lai"
+date: "2022-02-18"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    keep_md: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "../")
+
+```
+
+# 1.Preparation 
+## 1.1 Enviroment setup
+```{r, error = TRUE,message=FALSE}
+remotes::install_github("vqv/ggbiplot")
+requiredPackages = c('here','ggplot2','devtools','ggbiplot')
+for(p in requiredPackages){
+  if(!require(p,character.only = TRUE)) install.packages(p)
+  library(p,character.only = TRUE)
+}
+
+requiredPackages2=c('PCAtools','airway','magrittr','DESeq2')
+for (k in requiredPackages2){
+  if (!requireNamespace(k)) BiocManager::install(k)
+  library(k,character.only = TRUE)
+  }
+
+
+```
+
+## 1.2 Load data,genotype embedding, response
+
+```{r, error = TRUE}
+compoundname=read.csv2(here::here("data","compound_names.txt"),header=TRUE,sep="\t")
+drugcell_all=read.csv2(here::here("data","drugcell_all.txt"),header=FALSE,sep="\t")
+cellname=read.csv2(here::here("data","cell2ind.txt"),header=FALSE,sep="\t")
+cellmutation=read.csv2(here::here("data","cell2mutation.txt"),header=FALSE,sep=",")
+genename=read.csv2(here::here("data","gene2ind.txt"),header=FALSE,sep="\t")
+```
+
+## 1.3 PCA preparation
+```{r, error = TRUE}
+PCA_cell_TT=prcomp(cellmutation,scale. = TRUE, center=TRUE)
+PCA_cell_FT=prcomp(cellmutation,scale. = FALSE, center=TRUE)
+PCA_cell_TF=prcomp(cellmutation,scale. = TRUE, center=FALSE)
+PCA_cell_FF=prcomp(cellmutation,scale. = FALSE, center=FALSE)
+
+write.table(file=here::here("data","PCA","cell2mutation.csv"),cellmutation,row.names = F,col.names = T,sep=",")
+write.table(file=here::here("data","PCA","cell2mutation2.csv"),data.frame(cellmutation,cellmutation[,288]),row.names = F,col.names = T,sep=",")
+
+
+```
+
+# 2 plot PCA
+## 2.0 Try CACNA1B,having n=229, at row 329, scale=T, center=T
+```{r, error = TRUE}
+# CACNA1B is row 329
+genename[grepl("CACNA1B",genename[,2])==TRUE,]
+table(data.frame(cellmutation[,329]))
+
+PCA_cell_CACNA1B=data.frame(PCA_cell_TT$x,as.logical(cellmutation[,329]),factor(cellmutation[,329]))
+
+colnames(PCA_cell_CACNA1B)[c(1226,1227)]=c("CACNA1B","sizes")
+
+PCA_cell_CACNA1B1=PCA_cell_CACNA1B[which(PCA_cell_CACNA1B[,1226]==TRUE),]
+PCA_cell_CACNA1B2=PCA_cell_CACNA1B[which(PCA_cell_CACNA1B[,1226]==FALSE),]
+
+# combined
+
+colors <- c("true" = "grey", "false" = "#1c7a2b")
+
+
+ggplot(NULL,aes(x=PC1,y=PC2))+
+  geom_point(data=data.frame(PCA_cell_CACNA1B2),aes(color="true"), size = 2)+
+  geom_point(data=data.frame(PCA_cell_CACNA1B1),aes(color="false"), size = 3)+
+  xlab("PC1")+ ylab("PC2")+ ggtitle("CACNA1B, scale=T, center=T")+
+  coord_cartesian(expand = FALSE, #turn off axis expansion (padding)
+                  xlim = c(-10, 20),ylim=c(-4,4)
+                  )+
+  theme_bw()+
+  theme(panel.border=element_blank(),panel.grid.major=element_blank(),panel.grid.minor=element_blank(),axis.line= element_line(color = "black"))+
+  scale_color_manual(values = colors)
+
+ggsave("PCA_cell_CACNA1B.png",path=here::here("data","PCA"), width = 4.5, height = 5)
+
+# save CACNA1B SET
+write.table(file=here::here("data","PCA","PCA_cell_CACNA1B.txt"),PCA_cell_CACNA1B[,1:1226] ,col.names = T,sep ="\t")
+```
+
+
+## 2.1 BRAF mutations with , scale=T, center=T
+```{r, error = TRUE}
+PCA_cell_BRAF_TT=data.frame(PCA_cell_TT$x,as.logical(cellmutation[,288]),factor(cellmutation[,288]))
+
+colnames(PCA_cell_BRAF_TT)[c(1226,1227)]=c("BRAF","sizes")
+
+plot(PCA_cell_TT$x[,1], PCA_cell_TT$x[,2],)
+
+# plot(PCA_cell_TT$x[,1], PCA_cell_TT$x[,2])
+
+PCA_cell_scaled_names=c("PC1","PC2")
+
+# ggplot(data=data.frame(PCA_cell_scaled_scaled$x),aes(x=PCA_cell_scaled_scaled_names[1],y=PCA_cell_scaled_scaled_names[2]))+
+
+
+PCA_cell_BRAF_TT1=PCA_cell_BRAF_TT[which(PCA_cell_BRAF_TT[,1226]==TRUE),]
+PCA_cell_BRAF_TT2=PCA_cell_BRAF_TT[which(PCA_cell_BRAF_TT[,1226]==FALSE),]
+
+# combined
+
+colors <- c("true" = "grey", "false" = "#1c7a2b")
+
+
+ggplot(NULL,aes(x=PC1,y=PC2))+
+  geom_point(data=data.frame(PCA_cell_BRAF_TT2),aes(color="true"), size = 2)+
+  geom_point(data=data.frame(PCA_cell_BRAF_TT1),aes(color="false"), size = 3)+
+  xlab("PC1")+ ylab("PC2")+ ggtitle("BRAF, scale=T, center=T")+
+  coord_cartesian(expand = FALSE, #turn off axis expansion (padding)
+                  xlim = c(-10, 20),ylim=c(-4,4)
+                  )+
+  theme_bw()+
+  theme(panel.border=element_blank(),panel.grid.major=element_blank(),panel.grid.minor=element_blank(),axis.line= element_line(color = "black"))+
+  scale_color_manual(values = colors)
+
+
+ggsave("PCA_cell_BRAF_TT.png",path=here::here("data","PCA"), width = 4.5, height = 5)
+
+
+
+
+
+
+
+```
+
+
+## 2.2 BRAF mutations with , scale=T, center=F
+
+```{r, error = TRUE}
+PCA_cell_BRAF_TF=data.frame(PCA_cell_TF$x,as.logical(cellmutation[,288]),factor(cellmutation[,288]))
+
+colnames(PCA_cell_BRAF_TF)[c(1226,1227)]=c("BRAF","sizes")
+
+# plot(PCA_cell_TF$x[,1], PCA_cell_TF$x[,2])
+
+# View(head(PCA_cell_TF$x,3))
+PCA_cell_TF_names=c("PC1","PC2")
+
+# ggplot(data=data.frame(PCA_cell_TF_scaled$x),aes(x=PCA_cell_TF_scaled_names[1],y=PCA_cell_TF_scaled_names[2]))+
+
+ggplot(data=data.frame(PCA_cell_BRAF_TF),
+       aes_string(x=colnames(PCA_cell_BRAF_TF)[1],y=colnames(PCA_cell_BRAF_TF)[2],
+                  color=colnames(PCA_cell_BRAF_TF)[1226],
+                  group=colnames(PCA_cell_BRAF_TF)[1226],
+                  size=colnames(PCA_cell_BRAF_TF)[1227]
+                  ))+
+  geom_point(shape=19)+
+  scale_size_manual(values=c(2,4))+
+  scale_color_manual(values = c("grey", "#1c7a2b"))+
+  xlab("PC1")+ ylab("PC2")+ ggtitle("BRAF, scale=T, center=F")+
+  coord_cartesian(expand = FALSE, #turn off axis expansion (padding)
+                  # xlim = c(-2.5, 2.5),ylim=c(-1,1)
+                 xlim = c(-30, 0),ylim=c(-5,3)
+
+                  )+
+  theme_bw()+
+  theme(panel.border=element_blank(),panel.grid.major=element_blank(),panel.grid.minor=element_blank(),axis.line= element_line(colour = "black"))
+
+ggsave("PCA_cell_BRAF_TF.png",path=here::here("data","PCA"), width = 4.5, height = 5)
+
+
+```
+
+
+
+## 2.3 BRAF mutations, scale=F, center=T, n=175 doesn't match with figure 3A's n=229
+```{r, error = TRUE}
+# BRAF is row 288
+genename[grepl("BRAF",genename[,2])==TRUE,]
+
+# but it only has 175 mutated cell lines, not 229
+table(data.frame(cellmutation[,288]))
+
+# PCA_cell_BRAF=data.frame(PCA_cell$x,BRAF=cellmutation[,288])
+PCA_cell_BRAF_FT=data.frame(PCA_cell_FT$x,as.logical(cellmutation[,288]),factor(cellmutation[,288]))
+
+colnames(PCA_cell_BRAF_FT)[c(1226,1227)]=c("BRAF","sizes")
+
+# simply plot
+plot(PCA_cell_FT$x[,1], PCA_cell_FT$x[,2])
+
+# View(head(PCA_cell_FT$x,3))
+
+
+# ggplot(data=data.frame(PCA_cell_scaled$x),aes(x=PCA_cell_scaled_names[1],y=PCA_cell_scaled_names[2]))+
+
+ggplot(data=data.frame(PCA_cell_BRAF_FT),
+       aes_string(x=colnames(PCA_cell_BRAF_FT)[1],y=colnames(PCA_cell_BRAF_FT)[2],
+                  color=colnames(PCA_cell_BRAF_FT)[1226],
+                  group=colnames(PCA_cell_BRAF_FT)[1226],
+                  size=colnames(PCA_cell_BRAF_FT)[1227]
+                  ))+
+  geom_point(shape=19)+
+  scale_size_manual(values=c(2,4))+
+  scale_color_manual(values = c("grey", "#1c7a2b"))+
+  xlab("PC1")+ ylab("PC2")+ ggtitle("BRAF, scale=F, center=T")+
+  coord_cartesian(expand = FALSE, #turn off axis expansion (padding)
+                  # xlim = c(-2.5, 2.5),ylim=c(-1,1)
+                  xlim = c(-2.5, 2.5),ylim=c(-1,1)
+                  )+
+  theme_bw()+
+  theme(panel.border=element_blank(),panel.grid.major=element_blank(),panel.grid.minor=element_blank(),axis.line= element_line(colour = "black"))
+
+ggsave("PCA_cell_BRAF_FT.png",path=here::here("data","PCA"), width = 4.5, height = 5)
+
+
+# save BRAF SET
+write.table(file=here::here("data","PCA","PCA_cell_BRAF_FT.txt"),PCA_cell_BRAF_FT[,1:1226] ,col.names = T,sep ="\t")
+```
+
+
+## 2.4 BRAF mutations, scale=F, center=F
+
+```{r, error = TRUE}
+PCA_cell_BRAF_FF=data.frame(PCA_cell_FF$x,as.logical(cellmutation[,288]),factor(cellmutation[,288]))
+
+colnames(PCA_cell_BRAF_FF)[c(1226,1227)]=c("BRAF","sizes")
+
+# plot(PCA_cell_FF$x[,1], PCA_cell_FF$x[,2])
+
+# View(head(PCA_cell_FF$x,3))
+PCA_cell_FF_names=c("PC1","PC2")
+
+# ggplot(data=data.frame(PCA_cell_FF_scaled$x),aes(x=PCA_cell_FF_scaled_names[1],y=PCA_cell_FF_scaled_names[2]))+
+
+ggplot(data=data.frame(PCA_cell_BRAF_FF),
+       aes_string(x=colnames(PCA_cell_BRAF_FF)[1],y=colnames(PCA_cell_BRAF_FF)[2],
+                  color=colnames(PCA_cell_BRAF_FF)[1226],
+                  group=colnames(PCA_cell_BRAF_FF)[1226],
+                  size=colnames(PCA_cell_BRAF_FF)[1227]
+                  ))+
+  geom_point(shape=19)+
+  scale_size_manual(values=c(2,4))+
+  scale_color_manual(values = c("grey", "#1c7a2b"))+
+  xlab("PC1")+ ylab("PC2")+ ggtitle("BRAF, scale=F, center=F")+
+  coord_cartesian(expand = FALSE, #turn off axis expansion (padding)
+                  xlim = c(-5, 0),ylim=c(-0.5,3)
+                  # xlim = c(-10, 0),ylim=c(-5,10)
+                  )+
+  theme_bw()+
+  theme(panel.border=element_blank(),panel.grid.major=element_blank(),panel.grid.minor=element_blank(),axis.line= element_line(colour = "black"))
+
+ggsave("PCA_cell_BRAF_FF.png",path=here::here("data","PCA"), width = 4.5, height = 5)
+
+
+```
+
+## make a scree plot
+```{r, error = TRUE}
+PCA_cell.var <- PCA_cell_TT$sdev^2
+PCA_cell.var.per <- round(PCA_cell.var/sum(PCA_cell.var)*100, 2)
+
+barplot(PCA_cell.var.per, main="Scree Plot", xlab="Principal Component", ylab="Percent Variation")
+
+PCA_cell.var.per2=data.frame(index=c(1:length(PCA_cell.var.per)),variation=PCA_cell.var.per)
+
+ggplot(data=PCA_cell.var.per2, aes(x=index,y=variation))+
+  xlab("Principal Component")+ ylab("Percent Variation")+
+  geom_bar(stat="identity")+
+  coord_cartesian(expand = FALSE, #turn off axis expansion (padding)
+                  xlim = c(0, 20),ylim=c(0,15))+
+  theme_bw()+
+  theme(panel.border=element_blank(),panel.grid.major=element_blank(),panel.grid.minor=element_blank(),axis.line= element_line(colour = "black"))
+
+# sum(PCA_cell.var.per)
+
+```
+
+## biplot
+```{r,error=TRUE}
+ggbiplot(PCA_cell,labels =NULL)
+ggbiplot(PCA_cell_scaled)
+ggbiplot(PCA_cell_scaled_nocentered)
+
+biplot(PCA_cell)
+biplot(PCA_cell_scaled)
+biplot(PCA_cell_scaled_nocentered)
+
+```
+
+## PCAtools
+
+```{r, error=TRUE}
+library(airway)
+library(magrittr)
+
+data('airway')
+airway$dex %<>% relevel('untrt')
+
+```
+
+### Annotate the Ensembl gene IDs to gene symbols:
+```{r, error=TRUE}
+  ens <- rownames(airway)
+
+  library(org.Hs.eg.db)
+  symbols <- mapIds(org.Hs.eg.db, keys = ens,
+    column = c('SYMBOL'), keytype = 'ENSEMBL')
+  symbols <- symbols[!is.na(symbols)]
+  symbols <- symbols[match(rownames(airway), names(symbols))]
+  rownames(airway) <- symbols
+  keep <- !is.na(rownames(airway))
+  airway <- airway[keep,]
+```
+
+```{r, error=TRUE}
+
+```
+
+### Normalise the data and transform the normalised counts to variance-stabilised expression levels:
+```{r, error=TRUE}
+
+  library('DESeq2')
+  dds <- DESeqDataSet(airway, design = ~ cell + dex)
+  dds <- DESeq(dds)
+  vst <- assay(vst(dds))
+```
+
+# Conduct principal component analysis (PCA):
+
+```{r, error=TRUE}
+p <- pca(vst, metadata = colData(airway), removeVar = 0.1)
+## -- removing the lower 10% of variables based on variance
+
+
+## scree plot
+screeplot(p, axisLabSize = 18, titleLabSize = 22)
+```
+## 3.3 A bi-plot
+
+```{r, error=TRUE}
+biplot(p)
+
+biplot(p, showLoadings = TRUE,
+  labSize = 5, pointSize = 5, sizeLoadingsNames = 5)
+
+pcatool_PCA=pca(cellmutation)
+
+biplot(pcatool_PCA, showLoadings = TRUE,
+  labSize = 0, pointSize = 2, sizeLoadingsNames = 0)
+
+ggbiplot(pcatool_PCA)
+
+ggplot(data=data.frame(PCA_cell_BRAF_TF),
+     aes_string(x=colnames(PCA_cell_BRAF_TF)[1],y=colnames(PCA_cell_BRAF_TF)[2],
+                color=colnames(PCA_cell_BRAF_TF)[1226],
+                group=colnames(PCA_cell_BRAF_TF)[1226],
+                size=colnames(PCA_cell_BRAF_TF)[1227]
+                ))+
+geom_point(shape=19)+
+scale_size_manual(values=c(2,4))+
+scale_color_manual(values = c("grey", "#1c7a2b"))+
+xlab("PC1")+ ylab("PC2")+
+coord_cartesian(expand = FALSE, #turn off axis expansion (padding)
+                # xlim = c(-2.5, 2.5),ylim=c(-1,1)
+                xlim = c(-40, 5),ylim=c(-15,5)
+                )+
+theme_bw()+
+theme(panel.border=element_blank(),panel.grid.major=element_blank(),panel.grid.minor=element_blank(),axis.line= element_line(colour = "black"))
+
+```
