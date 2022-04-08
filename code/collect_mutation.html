@@ -1527,14 +1527,14 @@ for(p in requiredPackages){
   library(p,character.only = TRUE)
 }
 
-requiredPackages2=c()
+requiredPackages2=c(&quot;org.Hs.eg.db&quot;)
 for (k in requiredPackages2){
-  if (!requireNamespace(k)) BiocManager::install(k)
+  if (!requireNamespace(k)) BiocManager::install(k,update=FALSE)
   library(k,character.only = TRUE)
   }</code></pre>
 </div>
 <div id="loading-data" class="section level2">
-<h2>1.2 Loading data</h2>
+<h2>1.2.1 Loading data</h2>
 <pre class="r"><code>mutation_18Q2=read.csv2(here::here(&quot;data&quot;,&quot;cell_mutation&quot;,&quot;CCLE_DepMap_18Q2_maf_20180502.txt&quot;),header=TRUE,sep=&quot;\t&quot;)
 
 mutation_22Q1=read.csv2(here::here(&quot;data&quot;,&quot;cell_mutation&quot;,&quot;CCLE_mutations_22Q1.csv&quot;),header=TRUE,sep=&quot;,&quot;)
@@ -1555,49 +1555,170 @@ dim(table(mutation_22Q1[,2]))</code></pre>
 <pre class="r"><code>dim(table(mutation_22Q1[,16]))</code></pre>
 <pre><code>## [1] 1759</code></pre>
 </div>
-<div id="extract-top-15" class="section level2">
-<h2>1.2 Extract top 15%</h2>
-<pre class="r"><code>table_18Q2=as.data.frame(table(mutation_18Q2[,1]))
-table_18Q2[,1]=as.character(table_18Q2[,1])
+<div id="get-unique-gene-frequncy" class="section level2">
+<h2>1.2.2 Get unique gene frequncy</h2>
+<pre class="r"><code># there&#39;s duplication in mutated gene for cell lines
+cell_list_18Q2=data.frame(as.character(data.frame(table(mutation_18Q2[,16]))[,1]))
+cell_list_22Q1=data.frame(as.character(data.frame(table(mutation_22Q1[,16]))[,1]))
 
-table_18Q2=dplyr::arrange(table_18Q2,desc(table_18Q2[,2]))
-table_18Q2_15P &lt;- table_18Q2[1:(dim(table_18Q2)[1]*0.15),]
-table_18Q2_15P[grepl(&quot;CACNA1B|BRAF&quot;,table_18Q2_15P[,1],ignore.case = TRUE),]</code></pre>
+
+
+#####################################
+# custom function for lapply
+# grepl not good
+# get_unique_gene_for_each_cell =function(cell_list,mutation){
+#   gene_list_18Q2=mutation[grepl(cell_list,mutation[,16],ignore.case = TRUE),c(1,2,16)]
+#   gene_list_18Q2=dplyr::distinct(gene_list_18Q2, gene_list_18Q2[,1],.keep_all=TRUE)
+#   return(gene_list_18Q2)
+# }
+# # use which instead
+# get_unique_gene_for_each_cell =function(cell_list,mutation){
+#   gene_list_single=mutation[which(mutation[,16]==cell_list),c(1,2,16)]
+#   gene_list_single=dplyr::distinct(gene_list_18Q2, gene_list_18Q2[,1],.keep_all=TRUE)
+#   return(gene_list_single)
+# }
+# 
+# 
+#   
+# # lapply
+# gene_list_18Q2=lapply(X=cell_list_18Q2[,1],FUN=get_unique_gene_for_each_cell2,mutation=mutation_18Q2)
+# gene_list_22Q1=lapply(X=cell_list_22Q1[,1],FUN=get_unique_gene_for_each_cell2,mutation=mutation_22Q1)
+# # convert list to a whole dataframe
+# gene_list_18Q2=as.data.frame(do.call(rbind,test))
+# gene_list_22Q1=as.data.frame(do.call(rbind,test2))
+################################
+
+
+
+
+#######################
+# get difference one, and check, found grepl made mistakes
+# dim1_test=as.data.frame(do.call(rbind,lapply(test,dim))[,1])
+# dim1_test2=as.data.frame(do.call(rbind,lapply(test2,dim))[,1])
+# difference_test12=dim1_test-dim1_test2
+# 
+# cell_list_diff_18Q2_name=as.data.frame(cell_list_18Q2[which(difference_test12!=0),])
+# cell_list_diff_18Q2=which(difference_test12!=0)
+######################
+
+
+
+
+
+## if alternative
+# 18Q2 first
+gene_list_18Q2=list()
+gene_list_18Q2_truegene=list()
+
+for (i in 1:length(cell_list_18Q2[,1])){
+  separate_cellline=mutation_18Q2[which(mutation_18Q2[,16]==cell_list_18Q2[,1][i]),c(1,2,16)]
+  # separate_cellline=mutation_18Q2[grepl(cell_list_18Q2[,1][i],mutation_18Q2[,16],ignore.case = TRUE),c(1,2,16)]
+  separate_cellline=dplyr::distinct(separate_cellline, separate_cellline[,1],.keep_all=TRUE)
+  gene_list_18Q2[[i]]=separate_cellline
+  separate_cellline_truegene=separate_cellline[separate_cellline[,2]!=0,]
+  gene_list_18Q2_truegene[[i]]=separate_cellline_truegene
+}
+
+
+
+# View(gene_list_18Q2[[2]])
+# View(gene_list_18Q2_truegene[[2]])
+
+gene_list_18Q2_all=as.data.frame(do.call(rbind,gene_list_18Q2))
+
+gene_list_18Q2_truegene_all=as.data.frame(do.call(rbind,gene_list_18Q2_truegene))
+
+freq_18Q2_unique=as.data.frame(table(gene_list_18Q2_all[,1]))
+freq_18Q2_unique_truegene=as.data.frame(table(gene_list_18Q2_truegene_all[,1]))
+
+
+## 22Q1 next
+gene_list_22Q1=list()
+gene_list_22Q1_truegene=list()
+for (i in 1:length(cell_list_22Q1[,1])){
+  separate_cellline=mutation_22Q1[which(mutation_22Q1[,16]==cell_list_22Q1[,1][i]),c(1,2,16)]
+  # separate_cellline=mutation_22Q1[grepl(cell_list_22Q1[,1][i],mutation_22Q1[,16],ignore.case = TRUE),c(1,2,16)]
+  separate_cellline=dplyr::distinct(separate_cellline, separate_cellline[,1],.keep_all=TRUE)
+  gene_list_22Q1[[i]]=separate_cellline
+  separate_cellline_truegene=separate_cellline[separate_cellline[,2]!=0,]
+  gene_list_22Q1_truegene[[i]]=separate_cellline_truegene
+}
+
+# View(gene_list_22Q1[[2]])
+# View(gene_list_22Q1_truegene[[2]])
+
+gene_list_22Q1_all=as.data.frame(do.call(rbind,gene_list_22Q1))
+
+gene_list_22Q1_truegene_all=as.data.frame(do.call(rbind,gene_list_22Q1_truegene))
+
+freq_22Q1_unique=as.data.frame(table(gene_list_22Q1_all[,1]))
+freq_22Q1_unique_truegene=as.data.frame(table(gene_list_22Q1_truegene_all[,1]))
+
+
+# convert gene symbol to Entrez ID
+hs &lt;- org.Hs.eg.db
+
+freq_22Q1_fakegene=freq_22Q1[!freq_22Q1[,1] %in% freq_22Q1_unique_truegene[,1],]</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;freq_22Q1&#39; not found</code></pre>
+<pre class="r"><code>my.symbols &lt;- freq_22Q1_fakegene[,1]</code></pre>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;freq_22Q1_fakegene&#39; not found</code></pre>
+<pre class="r"><code>freq_22Q1_fakegene_noentrezid=select(hs, 
+       keys = my.symbols,
+       columns = c(&quot;ENTREZID&quot;, &quot;SYMBOL&quot;),
+       keytype = &quot;SYMBOL&quot;)</code></pre>
+<pre><code>## Error in .testForValidKeys(x, keys, keytype, fks): object &#39;my.symbols&#39; not found</code></pre>
+<pre class="r"><code>write.table(file=here::here(&quot;data&quot;,&quot;22Q1_fakegene_noentrezid.csv&quot;),freq_22Q1_fakegene_noentrezid[,1] ,col.names = F,row.names = F,sep =&quot;,&quot;,quote=F)</code></pre>
+<pre><code>## Error in is.data.frame(x): object &#39;freq_22Q1_fakegene_noentrezid&#39; not found</code></pre>
+<pre class="r"><code>write.table(file=here::here(&quot;data&quot;,&quot;22Q1_gene_list_all.txt&quot;),freq_22Q1[,1] ,col.names = F,row.names = F,sep =&quot;\t&quot;,quote=F)</code></pre>
+<pre><code>## Error in is.data.frame(x): object &#39;freq_22Q1&#39; not found</code></pre>
+</div>
+<div id="extract-top-15" class="section level2">
+<h2>1.3 extract top 15%</h2>
+<pre class="r"><code># extract top 15%
+
+freq_18Q2=as.data.frame(table(mutation_18Q2[,1]))
+freq_18Q2[,1]=as.character(freq_18Q2[,1])
+
+freq_18Q2=dplyr::arrange(freq_18Q2,desc(freq_18Q2[,2]))
+freq_18Q2_15P &lt;- freq_18Q2[1:(dim(freq_18Q2)[1]*0.15),]
+freq_18Q2_15P[grepl(&quot;CACNA1B|BRAF&quot;,freq_18Q2_15P[,1],ignore.case = TRUE),]</code></pre>
 <pre><code>##        Var1 Freq
 ## 138 CACNA1B  357
 ## 282    BRAF  273</code></pre>
-<pre class="r"><code>table_22Q1=as.data.frame(table(mutation_22Q1[,1]))
-table_22Q1[,1]=as.character(table_22Q1[,1])
+<pre class="r"><code>freq_22Q1=as.data.frame(table(mutation_22Q1[,1]))
+freq_22Q1[,1]=as.character(freq_22Q1[,1])
 
-table_22Q1=dplyr::arrange(table_22Q1,desc(table_22Q1[,2]))
-table_22Q1_15P &lt;- table_22Q1[1:(dim(table_22Q1)[1]*0.15),]
-table_22Q1_15P[grepl(&quot;CACNA1B|BRAF&quot;,table_22Q1_15P[,1],ignore.case = TRUE),]</code></pre>
+freq_22Q1=dplyr::arrange(freq_22Q1,desc(freq_22Q1[,2]))
+freq_22Q1_15P &lt;- freq_22Q1[1:(dim(freq_22Q1)[1]*0.15),]
+freq_22Q1_15P[grepl(&quot;CACNA1B|BRAF&quot;,freq_22Q1_15P[,1],ignore.case = TRUE),]</code></pre>
 <pre><code>##        Var1 Freq
 ## 224 CACNA1B  307
 ## 337    BRAF  264</code></pre>
 <pre class="r"><code># somehow, the frequncy of these 2 genes are decreased</code></pre>
 </div>
 <div id="check-common-genes-to-determine-thresholdtop-15-are-not-really-top-15" class="section level2">
-<h2>1.3 check common genes to determine threshold(top 15% are not really
+<h2>1.4 check common genes to determine threshold(top 15% are not really
 top 15%)</h2>
 <pre class="r"><code>genename_DC=read.csv2(here::here(&quot;data&quot;,&quot;gene2ind.txt&quot;),header=FALSE,sep=&quot;\t&quot;)
 genename_DC=as.data.frame(genename_DC[,2])
 genename_DC_sorted=dplyr::arrange(genename_DC,genename_DC)
 
-table_18Q2_genename=as.data.frame(table_18Q2)
+freq_18Q2=as.data.frame(freq_18Q2)
+matched_18Q2=freq_18Q2[freq_18Q2[,1] %in% genename_DC_sorted[,1],]
+matched_18Q2_unique_truegene=freq_18Q2_unique_truegene[freq_18Q2_unique_truegene[,1] %in% genename_DC_sorted[,1],]
 
 
-# matched1=table_18Q2_genename[grepl(paste(genename_DC_sorted[1:2008,1],collapse = &quot;|&quot;),table_18Q2_genename[,1],fixed=TRUE),]
+freq_22Q1=as.data.frame(freq_22Q1)
+matched_22Q1=freq_22Q1[freq_22Q1[,1] %in% genename_DC_sorted[,1],]
+matched_22Q1_unique_truegene=freq_22Q1_unique_truegene[freq_22Q1_unique_truegene[,1] %in% genename_DC_sorted[,1],]
 
-matched1=table_18Q2_genename[table_18Q2_genename[,1] %in% genename_DC_sorted[,1],]
-
-
-table_22Q1_genename=as.data.frame(table_22Q1)
-
-matched2=table_22Q1_genename[table_22Q1_genename[,1] %in% genename_DC_sorted[,1],]</code></pre>
+# only not matched is GSTT1, because of in both release of CCLE mutation, the entrez ID is missing.
+notmatched_18Q2_unique_truegene=genename_DC_sorted[!genename_DC_sorted[,1] %in% matched_18Q2_unique_truegene[,1],]
+notmatched_22Q1_unique_truegene=genename_DC_sorted[!genename_DC_sorted[,1] %in% matched_22Q1_unique_truegene[,1],]</code></pre>
 </div>
-<div id="check-paper-mutation-gene-with-cell-name" class="section level2">
-<h2>1.4 check paper mutation gene with cell name</h2>
+<div id="check-paper-mutation-gene-with-cell-name-corl51_lung_dcach-001047" class="section level2">
+<h2>1.5 check paper mutation gene with cell name,
+CORL51_LUNG_DC,ACH-001047</h2>
 <pre class="r"><code>cellmutation_name_DC=cbind(cellname_DC[,2],cellmutation_DC)
 cellmutation_number_DC=data.frame(cellname_DC[,2],as.numeric(rowSums(cellmutation_name_DC[,2:3009])))
 
@@ -1610,30 +1731,23 @@ DC_CORL51_LUNG=cellmutation_name_DC[which(cellmutation_name_DC[,1]==&quot;CORL51
 
 DC_CORL51_LUNG_genelist=data.frame(genename_DC[which(DC_CORL51_LUNG[,2:3009]==1),])
 
-R18Q2_CORL51_LUNG_genelist=unique(data.frame(mutation_18Q2[grepl(&quot;CORL51_LUNG&quot;,mutation_18Q2[,16],ignore.case = TRUE),][,1]))
-rownames(R18Q2_CORL51_LUNG_genelist)=c()
+R18Q2_CORL51_LUNG_genelist_unique_notunique=mutation_18Q2[grepl(&quot;CORL51_LUNG&quot;,mutation_18Q2[,16],ignore.case = TRUE),]
 
-comparison=compare(R18Q2_CORL51_LUNG_genelist[,1],DC_CORL51_LUNG_genelist[,1],allowAll=TRUE)
-comparison</code></pre>
-<pre><code>## FALSE
-##   shortened model
-##   sorted
-##   ignored case</code></pre>
-<pre class="r"><code>setdiff(R18Q2_CORL51_LUNG_genelist[,1],DC_CORL51_LUNG_genelist[,1])</code></pre>
+R18Q2_CORL51_LUNG_genelist_unique=unique(data.frame(mutation_18Q2[grepl(&quot;CORL51_LUNG&quot;,mutation_18Q2[,16],ignore.case = TRUE),][,1]))
+rownames(R18Q2_CORL51_LUNG_genelist_unique)=c()
+
+comparison=compare(R18Q2_CORL51_LUNG_genelist_unique[,1],DC_CORL51_LUNG_genelist[,1],allowAll=TRUE)
+
+
+setdiff(R18Q2_CORL51_LUNG_genelist_unique[,1],DC_CORL51_LUNG_genelist[,1])</code></pre>
 <pre><code>##  [1] &quot;RBM15&quot;  &quot;ADCK3&quot;  &quot;TRIM67&quot; &quot;FMN2&quot;   &quot;TTN&quot;    &quot;SPEG&quot;   &quot;GATA2&quot;  &quot;TRIM36&quot;
 ##  [9] &quot;BAG6&quot;   &quot;PKHD1&quot;  &quot;GLI3&quot;   &quot;TRRAP&quot;  &quot;LETM2&quot;  &quot;COPS5&quot;  &quot;PSKH2&quot;  &quot;CSMD3&quot; 
 ## [17] &quot;EIF3H&quot;  &quot;EXT1&quot;   &quot;ERCC6&quot;  &quot;MPPED2&quot; &quot;NIN&quot;    &quot;KTN1&quot;   &quot;CSPG4&quot;  &quot;TEX14&quot; 
 ## [25] &quot;LAMA1&quot;  &quot;ALPK2&quot;  &quot;NRK&quot;</code></pre>
-<pre class="r"><code>all(R18Q2_CORL51_LUNG_genelist[,1] %in% DC_CORL51_LUNG_genelist[,1])</code></pre>
+<pre class="r"><code>all(R18Q2_CORL51_LUNG_genelist_unique[,1] %in% DC_CORL51_LUNG_genelist[,1])</code></pre>
 <pre><code>## [1] FALSE</code></pre>
-<pre class="r"><code>all(DC_CORL51_LUNG_genelist[,1] %in% R18Q2_CORL51_LUNG_genelist[,1])</code></pre>
+<pre class="r"><code>all(DC_CORL51_LUNG_genelist[,1] %in% R18Q2_CORL51_LUNG_genelist_unique[,1])</code></pre>
 <pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>library(sets)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;sets&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     %&gt;%</code></pre>
 </div>
 </div>
 
