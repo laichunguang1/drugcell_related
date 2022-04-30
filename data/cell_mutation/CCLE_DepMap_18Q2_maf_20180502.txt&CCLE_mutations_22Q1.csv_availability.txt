@@ -1,0 +1,5 @@
+CCLE_DepMap_18Q2_maf_20180502.txt and CCLE_mutations_22Q1.csv are avaible on CCLE dataset.
+
+download link here
+https://depmap.org/portal/download/?releasename=DepMap+Public+18Q2&filename=CCLE_DepMap_18Q2_maf_20180502.txt
+https://depmap.org/portal/download/?releasename=DepMap+Public+22Q1&filename=CCLE_mutations.csv
