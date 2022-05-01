@@ -21,7 +21,7 @@ knitr::opts_knit$set(root.dir = "../")
 # 1.Preparation 
 ## 1.1 Enviroment setup
 ```{r, error = TRUE,message=FALSE}
-requiredPackages = c('here','compare',"dplyr")
+requiredPackages = c('here','compare',"dplyr","foreach","doParallel")
 for(p in requiredPackages){
   if(!require(p,character.only = TRUE)) install.packages(p)
   library(p,character.only = TRUE)
@@ -39,11 +39,14 @@ for (k in requiredPackages2){
 ## 1.2.1 Download & Loading data
 ```{r, error = TRUE}
 # download mutation files which too big to upload into repository
-download.file("https://ndownloader.figshare.com/files/34008434",destfile="./data/cell_mutation/CCLE_mutations_22Q1.csv")
+
+if (!file.exists("./data/cell_mutation/CCLE_mutations_22Q1.csv"))
+{download.file("https://ndownloader.figshare.com/files/34008434",destfile="./data/cell_mutation/CCLE_mutations_22Q1.csv")
+}
 
 
-download.file("https://storage.googleapis.com/depmap-external-downloads/ccle/CCLE_DepMap_18Q2_maf_20180502.txt?GoogleAccessId=depmap-external-downloads%40broad-achilles.iam.gserviceaccount.com&Expires=1651423612&Signature=anBAqAAt7a7AzCMVyewN3oza0OGKaIjzQ5RJ9OFbOqRmDG2efrPXAQMJHD6SRAp%252By9weMGrQLZR0v9TJC8zX8UQ6xDHqJFcT4ZJlt5eikJ%252B%252F01Nj3Ar6dvX3lLMmDhWPS1n2TA8M8Y3A6BSz7QjED7Penzqd1CEKuon8sbV1q7%252BlS%252Fo%252FYLDSHCrxYRfQjB%252FUabvpDRpzxOVzYQHBRjL0rH1LGKKbT7m8QLRmlj02ifBhaRYoI3alD1UBjiRLlYeOM2Noi37gfZbEWT43kEiPwhKUB1UKKqDFmHNsoycTUrWIlasRgZKsIxU%252FRKhyw4zF3tbgL0wX%252FttxKvS2bU1TuA%3D%3D&userProject=broad-achilles",destfile="./data/cell_mutation/CCLE_DepMap_18Q2_maf_20180502.txt")
-
+if (!file.exists("./data/cell_mutation/CCLE_DepMap_18Q2_maf_20180502.txt"))
+{download.file("https://storage.googleapis.com/depmap-external-downloads/ccle/CCLE_DepMap_18Q2_maf_20180502.txt?GoogleAccessId=depmap-external-downloads%40broad-achilles.iam.gserviceaccount.com&Expires=1651423612&Signature=anBAqAAt7a7AzCMVyewN3oza0OGKaIjzQ5RJ9OFbOqRmDG2efrPXAQMJHD6SRAp%252By9weMGrQLZR0v9TJC8zX8UQ6xDHqJFcT4ZJlt5eikJ%252B%252F01Nj3Ar6dvX3lLMmDhWPS1n2TA8M8Y3A6BSz7QjED7Penzqd1CEKuon8sbV1q7%252BlS%252Fo%252FYLDSHCrxYRfQjB%252FUabvpDRpzxOVzYQHBRjL0rH1LGKKbT7m8QLRmlj02ifBhaRYoI3alD1UBjiRLlYeOM2Noi37gfZbEWT43kEiPwhKUB1UKKqDFmHNsoycTUrWIlasRgZKsIxU%252FRKhyw4zF3tbgL0wX%252FttxKvS2bU1TuA%3D%3D&userProject=broad-achilles",destfile="./data/cell_mutation/CCLE_DepMap_18Q2_maf_20180502.txt")}
 
 mutation_18Q2=read.csv2(here::here("data","cell_mutation","CCLE_DepMap_18Q2_maf_20180502.txt"),header=TRUE,sep="\t")
 
@@ -187,9 +190,13 @@ write.table(file=here::here("data","22Q1_fakegene_noentrezid.csv"),freq_22Q1_fak
 write.table(file=here::here("data","22Q1_gene_list_all.txt"),freq_22Q1_unique[,1] ,col.names = F,row.names = F,sep ="\t",quote=F)
 ```
 
+
 ## 1.2.3 get the frequency of non-NA of each kind of AC
 ```{r, error=TRUE}
 colnames_18Q2=data.frame(colnames(mutation_18Q2))
+colnames_22Q1=data.frame(colnames(mutation_22Q1))
+
+
 # convert NA in mutation_18Q2 to empty ""
 mutation_18Q2_2=mutation_18Q2
 mutation_18Q2_2[is.na(mutation_18Q2_2)] <- ""
@@ -200,11 +207,9 @@ mutation_22Q1_2[is.na(mutation_22Q1_2)] <- ""
 
 
 
-colSums(!is.na(mutation_18Q2[,c(25:32)]))
+colSums(!mutation_18Q2_2[,c(25:32)] =="")
 
-
-colnames_22Q1=data.frame(colnames(mutation_22Q1))
-colSums(!mutation_22Q1[,c(25:32)] =="")
+colSums(!mutation_22Q1_2[,c(25:32)] =="")
 
 
 # 18Q2, SangerRecalibWES)AC 28, RNAseq_AC 29
@@ -251,9 +256,52 @@ print(endTime - startTime)
 
 startTime <- Sys.time()
 mutation_22Q1_filter=data.frame()
+# mutation_22Q1_filter=data.frame(matrix(NA, nrow = dim(mutation_22Q1)[1], ncol = dim(mutation_22Q1)[2]))
+# foreach (i=1:dim(mutation_22Q1)[1]) %dopar% 
 
-# for (i in 1:100000)
-for (i in 1:dim(mutation_22Q1)[1])
+mutation_22Q1_filter=foreach (i=1:dim(mutation_22Q1)[1],.combine=rbind) %dopar%
+
+# mutation_22Q1_filter=foreach (i=1:10000,.combine=rbind) %dopar%
+
+# for (i in 1:40000)
+# for (i in 1:dim(mutation_22Q1)[1])
+    {
+  rate=list()
+  # if CGA_WES_AC=-, use RNAseq_NA, or make rate=0
+  if((mutation_22Q1_2[i,27]=="")==FALSE)
+  {rate=strsplit(mutation_22Q1_2[i,27],":")}
+  else if((mutation_22Q1_2[i,30]=="")==FALSE)
+  {rate=strsplit(mutation_22Q1_2[i,30],":")}
+  else
+    {rate=list(c(0,1))}
+  # if reference allele=0, make rate=1
+  if (rate[[1]][2]!=0 & rate[[1]][2]==0)
+    {rate1=1}
+  else
+    {rate1=as.numeric(rate[[1]][1])/(as.numeric(rate[[1]][2])+as.numeric(rate[[1]][1]))}
+  
+  if (rate1>threshold)
+    # {mutation_22Q1_filter=rbind(mutation_22Q1_filter, cbind(mutation_22Q1_2[i,],rate1))}
+    {cbind(mutation_22Q1_2[i, c(1,2)],rate1)}
+}
+
+endTime <- Sys.time()
+print(endTime - startTime)
+
+
+mutation_22Q1_filter_0.5=mutation_22Q1_filter
+
+
+
+
+
+startTime <- Sys.time()
+mutation_22Q1_filter=data.frame()
+# foreach (i=1:dim(mutation_22Q1)[1]) %dopar% 
+
+
+for (i in 1:40000)
+# for (i in 1:dim(mutation_22Q1)[1])
     {
   rate=list()
   # if CGA_WES_AC=-, use RNAseq_NA, or make rate=0
@@ -276,10 +324,8 @@ for (i in 1:dim(mutation_22Q1)[1])
 endTime <- Sys.time()
 print(endTime - startTime)
 
-mutation_22Q1_filter_0.5=mutation_22Q1_filter
 
-
-
+mutation_22Q1_filter_0.5_2=mutation_22Q1_filter
 
 
 ```
