@@ -21,17 +21,17 @@ knitr::opts_knit$set(root.dir = "../")
 # 1.Preparation 
 ## 1.1 Enviroment setup
 ```{r, error = TRUE,message=FALSE}
-requiredPackages = c('here','compare',"dplyr","foreach","doParallel")
+requiredPackages = c('here','compare',"dplyr","doMC")
 for(p in requiredPackages){
   if(!require(p,character.only = TRUE)) install.packages(p)
   library(p,character.only = TRUE)
 }
 
-requiredPackages2=c("org.Hs.eg.db")
-for (k in requiredPackages2){
-  if (!requireNamespace(k)) BiocManager::install(k,update=FALSE)
-  library(k,character.only = TRUE)
-  }
+# requiredPackages2=c("org.Hs.eg.db")
+# for (k in requiredPackages2){
+#   if (!requireNamespace(k)) BiocManager::install(k,update=FALSE)
+#   library(k,character.only = TRUE)
+#   }
 
 
 ```
@@ -70,126 +70,133 @@ dim(table(mutation_22Q1[,16]))
 ```
 
 
-## 1.2.2 Get unique gene frequncy
+<!-- ## 1.2.2.old Get unique gene frequncy -->
+<!-- ```{r, error = TRUE} -->
+
+
+<!-- # there's duplication in mutated gene for cell lines -->
+<!-- cell_list_18Q2=data.frame(as.character(data.frame(table(mutation_18Q2[,16]))[,1])) -->
+<!-- cell_list_22Q1=data.frame(as.character(data.frame(table(mutation_22Q1[,16]))[,1])) -->
+
+
+
+<!-- ##################################### -->
+<!-- # custom function for lapply -->
+<!-- # grepl not good -->
+<!-- # get_unique_gene_for_each_cell =function(cell_list,mutation){ -->
+<!-- #   gene_list_18Q2=mutation[grepl(cell_list,mutation[,16],ignore.case = TRUE),c(1,2,16)] -->
+<!-- #   gene_list_18Q2=dplyr::distinct(gene_list_18Q2, gene_list_18Q2[,1],.keep_all=TRUE) -->
+<!-- #   return(gene_list_18Q2) -->
+<!-- # } -->
+<!-- # # use which instead -->
+<!-- # get_unique_gene_for_each_cell =function(cell_list,mutation){ -->
+<!-- #   gene_list_single=mutation[which(mutation[,16]==cell_list),c(1,2,16)] -->
+<!-- #   gene_list_single=dplyr::distinct(gene_list_18Q2, gene_list_18Q2[,1],.keep_all=TRUE) -->
+<!-- #   return(gene_list_single) -->
+<!-- # } -->
+<!-- #  -->
+<!-- #  -->
+<!-- #    -->
+<!-- # # lapply -->
+<!-- # gene_list_18Q2=lapply(X=cell_list_18Q2[,1],FUN=get_unique_gene_for_each_cell2,mutation=mutation_18Q2) -->
+<!-- # gene_list_22Q1=lapply(X=cell_list_22Q1[,1],FUN=get_unique_gene_for_each_cell2,mutation=mutation_22Q1) -->
+<!-- # # convert list to a whole dataframe -->
+<!-- # gene_list_18Q2=as.data.frame(do.call(rbind,test)) -->
+<!-- # gene_list_22Q1=as.data.frame(do.call(rbind,test2)) -->
+<!-- ################################ -->
+
+
+
+
+<!-- ####################### -->
+<!-- # get difference one, and check, found grepl made mistakes -->
+<!-- # dim1_test=as.data.frame(do.call(rbind,lapply(test,dim))[,1]) -->
+<!-- # dim1_test2=as.data.frame(do.call(rbind,lapply(test2,dim))[,1]) -->
+<!-- # difference_test12=dim1_test-dim1_test2 -->
+<!-- #  -->
+<!-- # cell_list_diff_18Q2_name=as.data.frame(cell_list_18Q2[which(difference_test12!=0),]) -->
+<!-- # cell_list_diff_18Q2=which(difference_test12!=0) -->
+<!-- ###################### -->
+
+
+
+
+
+<!-- ## if alternative -->
+<!-- # 18Q2 first -->
+<!-- gene_list_18Q2=list() -->
+<!-- gene_list_18Q2_truegene=list() -->
+
+<!-- for (i in 1:length(cell_list_18Q2[,1])){ -->
+<!--   separate_cellline=mutation_18Q2[which(mutation_18Q2[,16]==cell_list_18Q2[,1][i]),c(1,2,16)] -->
+<!--   # separate_cellline=mutation_18Q2[grepl(cell_list_18Q2[,1][i],mutation_18Q2[,16],ignore.case = TRUE),c(1,2,16)] -->
+<!--   separate_cellline=dplyr::distinct(separate_cellline, separate_cellline[,1],.keep_all=TRUE) -->
+<!--   gene_list_18Q2[[i]]=separate_cellline -->
+<!--   separate_cellline_truegene=separate_cellline[separate_cellline[,2]!=0,] -->
+<!--   gene_list_18Q2_truegene[[i]]=separate_cellline_truegene -->
+<!-- } -->
+
+
+
+<!-- # View(gene_list_18Q2[[2]]) -->
+<!-- # View(gene_list_18Q2_truegene[[2]]) -->
+
+<!-- gene_list_18Q2_all=as.data.frame(do.call(rbind,gene_list_18Q2)) -->
+
+<!-- gene_list_18Q2_truegene_all=as.data.frame(do.call(rbind,gene_list_18Q2_truegene)) -->
+
+<!-- freq_18Q2_unique=as.data.frame(table(gene_list_18Q2_all[,1])) -->
+<!-- freq_18Q2_unique_truegene=as.data.frame(table(gene_list_18Q2_truegene_all[,1])) -->
+
+
+<!-- ## 22Q1 next -->
+<!-- gene_list_22Q1=list() -->
+<!-- gene_list_22Q1_truegene=list() -->
+<!-- for (i in 1:length(cell_list_22Q1[,1])){ -->
+<!--   separate_cellline=mutation_22Q1[which(mutation_22Q1[,16]==cell_list_22Q1[,1][i]),c(1,2,16)] -->
+<!--   # separate_cellline=mutation_22Q1[grepl(cell_list_22Q1[,1][i],mutation_22Q1[,16],ignore.case = TRUE),c(1,2,16)] -->
+<!--   separate_cellline=dplyr::distinct(separate_cellline, separate_cellline[,1],.keep_all=TRUE) -->
+<!--   gene_list_22Q1[[i]]=separate_cellline -->
+<!--   separate_cellline_truegene=separate_cellline[separate_cellline[,2]!=0,] -->
+<!--   gene_list_22Q1_truegene[[i]]=separate_cellline_truegene -->
+<!-- } -->
+
+<!-- # View(gene_list_22Q1[[2]]) -->
+<!-- # View(gene_list_22Q1_truegene[[2]]) -->
+
+<!-- gene_list_22Q1_all=as.data.frame(do.call(rbind,gene_list_22Q1)) -->
+
+<!-- gene_list_22Q1_truegene_all=as.data.frame(do.call(rbind,gene_list_22Q1_truegene)) -->
+
+<!-- freq_22Q1_unique=as.data.frame(table(gene_list_22Q1_all[,1])) -->
+<!-- freq_22Q1_unique_truegene=as.data.frame(table(gene_list_22Q1_truegene_all[,1])) -->
+
+
+<!-- # convert gene symbol to Entrez ID -->
+<!-- # hs <- org.Hs.eg.db -->
+<!-- #  -->
+<!-- # freq_22Q1_fakegene=freq_22Q1_unique[!freq_22Q1_unique[,1] %in% freq_22Q1_unique_truegene[,1],] -->
+<!-- # my.symbols <- as.character(freq_22Q1_fakegene[,1]) -->
+<!-- #  -->
+<!-- # freq_22Q1_fakegene_noentrezid=select(hs,  -->
+<!-- #        keys = my.symbols, -->
+<!-- #        columns = c("ENTREZID", "SYMBOL"), -->
+<!-- #        keytype = "SYMBOL") -->
+<!-- #  -->
+<!-- #  -->
+<!-- # write.table(file=here::here("data","22Q1_fakegene_noentrezid.csv"),freq_22Q1_fakegene_noentrezid[,1] ,col.names = F,row.names = F,sep =",",quote=F) -->
+<!-- #  -->
+<!-- #  -->
+<!-- # write.table(file=here::here("data","22Q1_gene_list_all.txt"),freq_22Q1_unique[,1] ,col.names = F,row.names = F,sep ="\t",quote=F) -->
+<!-- ``` -->
+
+## 1.2.2 remove fake genes
 ```{r, error = TRUE}
-
-
-# there's duplication in mutated gene for cell lines
-cell_list_18Q2=data.frame(as.character(data.frame(table(mutation_18Q2[,16]))[,1]))
-cell_list_22Q1=data.frame(as.character(data.frame(table(mutation_22Q1[,16]))[,1]))
-
-
-
-#####################################
-# custom function for lapply
-# grepl not good
-# get_unique_gene_for_each_cell =function(cell_list,mutation){
-#   gene_list_18Q2=mutation[grepl(cell_list,mutation[,16],ignore.case = TRUE),c(1,2,16)]
-#   gene_list_18Q2=dplyr::distinct(gene_list_18Q2, gene_list_18Q2[,1],.keep_all=TRUE)
-#   return(gene_list_18Q2)
-# }
-# # use which instead
-# get_unique_gene_for_each_cell =function(cell_list,mutation){
-#   gene_list_single=mutation[which(mutation[,16]==cell_list),c(1,2,16)]
-#   gene_list_single=dplyr::distinct(gene_list_18Q2, gene_list_18Q2[,1],.keep_all=TRUE)
-#   return(gene_list_single)
-# }
-# 
-# 
-#   
-# # lapply
-# gene_list_18Q2=lapply(X=cell_list_18Q2[,1],FUN=get_unique_gene_for_each_cell2,mutation=mutation_18Q2)
-# gene_list_22Q1=lapply(X=cell_list_22Q1[,1],FUN=get_unique_gene_for_each_cell2,mutation=mutation_22Q1)
-# # convert list to a whole dataframe
-# gene_list_18Q2=as.data.frame(do.call(rbind,test))
-# gene_list_22Q1=as.data.frame(do.call(rbind,test2))
-################################
-
-
-
-
-#######################
-# get difference one, and check, found grepl made mistakes
-# dim1_test=as.data.frame(do.call(rbind,lapply(test,dim))[,1])
-# dim1_test2=as.data.frame(do.call(rbind,lapply(test2,dim))[,1])
-# difference_test12=dim1_test-dim1_test2
-# 
-# cell_list_diff_18Q2_name=as.data.frame(cell_list_18Q2[which(difference_test12!=0),])
-# cell_list_diff_18Q2=which(difference_test12!=0)
-######################
-
-
-
-
-
-## if alternative
-# 18Q2 first
-gene_list_18Q2=list()
-gene_list_18Q2_truegene=list()
-
-for (i in 1:length(cell_list_18Q2[,1])){
-  separate_cellline=mutation_18Q2[which(mutation_18Q2[,16]==cell_list_18Q2[,1][i]),c(1,2,16)]
-  # separate_cellline=mutation_18Q2[grepl(cell_list_18Q2[,1][i],mutation_18Q2[,16],ignore.case = TRUE),c(1,2,16)]
-  separate_cellline=dplyr::distinct(separate_cellline, separate_cellline[,1],.keep_all=TRUE)
-  gene_list_18Q2[[i]]=separate_cellline
-  separate_cellline_truegene=separate_cellline[separate_cellline[,2]!=0,]
-  gene_list_18Q2_truegene[[i]]=separate_cellline_truegene
-}
-
-
-
-# View(gene_list_18Q2[[2]])
-# View(gene_list_18Q2_truegene[[2]])
-
-gene_list_18Q2_all=as.data.frame(do.call(rbind,gene_list_18Q2))
-
-gene_list_18Q2_truegene_all=as.data.frame(do.call(rbind,gene_list_18Q2_truegene))
-
-freq_18Q2_unique=as.data.frame(table(gene_list_18Q2_all[,1]))
-freq_18Q2_unique_truegene=as.data.frame(table(gene_list_18Q2_truegene_all[,1]))
-
-
-## 22Q1 next
-gene_list_22Q1=list()
-gene_list_22Q1_truegene=list()
-for (i in 1:length(cell_list_22Q1[,1])){
-  separate_cellline=mutation_22Q1[which(mutation_22Q1[,16]==cell_list_22Q1[,1][i]),c(1,2,16)]
-  # separate_cellline=mutation_22Q1[grepl(cell_list_22Q1[,1][i],mutation_22Q1[,16],ignore.case = TRUE),c(1,2,16)]
-  separate_cellline=dplyr::distinct(separate_cellline, separate_cellline[,1],.keep_all=TRUE)
-  gene_list_22Q1[[i]]=separate_cellline
-  separate_cellline_truegene=separate_cellline[separate_cellline[,2]!=0,]
-  gene_list_22Q1_truegene[[i]]=separate_cellline_truegene
-}
-
-# View(gene_list_22Q1[[2]])
-# View(gene_list_22Q1_truegene[[2]])
-
-gene_list_22Q1_all=as.data.frame(do.call(rbind,gene_list_22Q1))
-
-gene_list_22Q1_truegene_all=as.data.frame(do.call(rbind,gene_list_22Q1_truegene))
-
-freq_22Q1_unique=as.data.frame(table(gene_list_22Q1_all[,1]))
-freq_22Q1_unique_truegene=as.data.frame(table(gene_list_22Q1_truegene_all[,1]))
-
-
-# convert gene symbol to Entrez ID
-hs <- org.Hs.eg.db
-
-freq_22Q1_fakegene=freq_22Q1_unique[!freq_22Q1_unique[,1] %in% freq_22Q1_unique_truegene[,1],]
-my.symbols <- as.character(freq_22Q1_fakegene[,1])
-
-freq_22Q1_fakegene_noentrezid=select(hs, 
-       keys = my.symbols,
-       columns = c("ENTREZID", "SYMBOL"),
-       keytype = "SYMBOL")
-
-
-write.table(file=here::here("data","22Q1_fakegene_noentrezid.csv"),freq_22Q1_fakegene_noentrezid[,1] ,col.names = F,row.names = F,sep =",",quote=F)
-
-
-write.table(file=here::here("data","22Q1_gene_list_all.txt"),freq_22Q1_unique[,1] ,col.names = F,row.names = F,sep ="\t",quote=F)
+# pre 18Q2 1198167 , 22Q1 1231281
+# after 18Q2 1185137, 22Q1 1215177
+mutation_18Q2=mutation_18Q2[which(mutation_18Q2[,2]!=0),]
+mutation_22Q1=mutation_22Q1[which(mutation_22Q1[,2]!=0),]
 ```
-
 
 ## 1.2.3 get the frequency of non-NA of each kind of AC
 ```{r, error=TRUE}
@@ -204,7 +211,7 @@ mutation_18Q2_2[is.na(mutation_18Q2_2)] <- ""
 # convert NA in mutation_22Q1 to empty ""
 mutation_22Q1_2=mutation_22Q1
 mutation_22Q1_2[is.na(mutation_22Q1_2)] <- ""
-
+mutation_22Q1_3=mutation_22Q1_2[,c(1,2,27,30)]
 
 
 colSums(!mutation_18Q2_2[,c(25:32)] =="")
@@ -218,143 +225,262 @@ colSums(!mutation_22Q1_2[,c(25:32)] =="")
 # colSums(!is.na(mutation_18Q2[,c(28,29)]))
 # colSums(!mutation_22Q1[,c(27,30)] =="")
 
-threshold=0.5
 
-
-
-
-startTime <- Sys.time()
-mutation_18Q2_filter=data.frame()
-
-# for (i in 1:100000)
-for (i in 1:dim(mutation_18Q2)[1])
-    {
-  rate=list()
-  # if CGA_WES_AC=-, use RNAseq_NA, or make rate=0
-  if((mutation_18Q2_2[i,28]=="")==FALSE)
-  {rate=strsplit(mutation_18Q2_2[i,28],":")}
-  else if((mutation_18Q2_2[i,29]=="")==FALSE)
-  {rate=strsplit(mutation_18Q2_2[i,29],":")}
-  else
-    {rate=list(c(0,1))}
-  # if reference allele=0, make rate=1
-  if (rate[[1]][2]!=0 & rate[[1]][2]==0)
-    {rate1=1}
-  else
-    {rate1=as.numeric(rate[[1]][1])/(as.numeric(rate[[1]][2])+as.numeric(rate[[1]][1]))}
-  
-  if (rate1>threshold)
-    {mutation_18Q2_filter=rbind(mutation_18Q2_filter, cbind(mutation_18Q2_2[i,],rate1))}
-}
-
-mutation_18Q2_filter_0.5=mutation_18Q2_filter
-
-endTime <- Sys.time()
-print(endTime - startTime)
+library(doMC)
+library(itertools)
 
 
 
 startTime <- Sys.time()
-mutation_22Q1_filter=data.frame()
+# mutation_22Q1_filter=vector(length=20000)
+mutation_22Q1_filter=vector()
 # mutation_22Q1_filter=data.frame(matrix(NA, nrow = dim(mutation_22Q1)[1], ncol = dim(mutation_22Q1)[2]))
 # foreach (i=1:dim(mutation_22Q1)[1]) %dopar% 
 
-mutation_22Q1_filter=foreach (i=1:dim(mutation_22Q1)[1],.combine=rbind) %dopar%
+registerDoMC()
+getDoParWorkers()
 
-# mutation_22Q1_filter=foreach (i=1:10000,.combine=rbind) %dopar%
 
-# for (i in 1:40000)
-# for (i in 1:dim(mutation_22Q1)[1])
+
+
+#test_function
+testing_parallel=function(workersnumber,iter_2,reps)
+{
+  registerDoMC(workersnumber)
+  time=vector()
+  times_all=system.time(
+    for (j in c(1:reps))
     {
-  rate=list()
-  # if CGA_WES_AC=-, use RNAseq_NA, or make rate=0
-  if((mutation_22Q1_2[i,27]=="")==FALSE)
-  {rate=strsplit(mutation_22Q1_2[i,27],":")}
-  else if((mutation_22Q1_2[i,30]=="")==FALSE)
-  {rate=strsplit(mutation_22Q1_2[i,30],":")}
-  else
-    {rate=list(c(0,1))}
-  # if reference allele=0, make rate=1
-  if (rate[[1]][2]!=0 & rate[[1]][2]==0)
-    {rate1=1}
-  else
-    {rate1=as.numeric(rate[[1]][1])/(as.numeric(rate[[1]][2])+as.numeric(rate[[1]][1]))}
-  
-  if (rate1>threshold)
-    # {mutation_22Q1_filter=rbind(mutation_22Q1_filter, cbind(mutation_22Q1_2[i,],rate1))}
-    {cbind(mutation_22Q1_2[i, c(1,2)],rate1)}
+      ptime=system.time(
+        (mutation_22Q1_filter=foreach (i=1:iter_2,.combine=rbind) %dopar%{
+        rate=list()
+        # if CGA_WES_AC=-, use RNAseq_NA, or make rate=0
+        if((mutation_22Q1_2[i,27]=="")==FALSE)
+        {rate=strsplit(mutation_22Q1_2[i,27],":")}
+        else if((mutation_22Q1_2[i,30]=="")==FALSE)
+        {rate=strsplit(mutation_22Q1_2[i,30],":")}
+        else
+          {rate=list(c(0,1))}
+        # if reference allele=0, make rate=1
+        if (rate[[1]][2]!=0 & rate[[1]][2]==0)
+          {rate1=1}
+        else
+          {rate1=as.numeric(rate[[1]][1])/(as.numeric(rate[[1]][2])+as.numeric(rate[[1]][1]))}
+        
+        if (rate1>threshold)
+          # {mutation_22Q1_filter=rbind(mutation_22Q1_filter, cbind(mutation_22Q1_2[i,],rate1))}
+          {cbind(mutation_22Q1_2[i, c(1,2)],rate1)}
+      })
+      )
+      time[j]=ptime[[3]]
+    }
+  )[[3]]
+  time=append(time,sum(time))
+  time=append(time,times_all)
+  times2=list(time)
+  return(times2)
 }
 
-endTime <- Sys.time()
-print(endTime - startTime)
 
+# real function1
+real_parallel1=function(workersnumber,iter_2,reps,threshold)
+{
+  registerDoMC(workersnumber)
 
-mutation_22Q1_filter_0.5=mutation_22Q1_filter
+        (mutation_22Q1_filter=foreach(chunk=splitIndices(iter_2,workersnumber),.combine=rbind) %dopar%{
+          do.call(rbind,
+          sapply(chunk, function(i){
+            rate=list()
+            # if CGA_WES_AC=-, use RNAseq_NA, or make rate=0
+            if((mutation_22Q1_2[i,27]=="")==FALSE)
+            {rate=strsplit(mutation_22Q1_2[i,27],":")}
+            else if((mutation_22Q1_2[i,30]=="")==FALSE)
+            {rate=strsplit(mutation_22Q1_2[i,30],":")}
+            else
+              {rate=list(c(0,1))}
+            # if reference allele=0, make rate=1
+            if (rate[[1]][2]!=0 & rate[[1]][2]==0)
+              {rate1=1}
+            else
+              {rate1=as.numeric(rate[[1]][1])/(as.numeric(rate[[1]][2])+as.numeric(rate[[1]][1]))}
+            if (rate1>threshold)
+              # {mutation_22Q1_filter=rbind(mutation_22Q1_filter, cbind(mutation_22Q1_2[i,],rate1))}
+            {return(cbind(mutation_22Q1_2[i, c(1,2)],rate1))}   
+            # else{return(NULL)}
+            }
+          ))
+        
 
-
-
-
-
-startTime <- Sys.time()
-mutation_22Q1_filter=data.frame()
-# foreach (i=1:dim(mutation_22Q1)[1]) %dopar% 
-
-
-for (i in 1:40000)
-# for (i in 1:dim(mutation_22Q1)[1])
-    {
-  rate=list()
-  # if CGA_WES_AC=-, use RNAseq_NA, or make rate=0
-  if((mutation_22Q1_2[i,27]=="")==FALSE)
-  {rate=strsplit(mutation_22Q1_2[i,27],":")}
-  else if((mutation_22Q1_2[i,30]=="")==FALSE)
-  {rate=strsplit(mutation_22Q1_2[i,30],":")}
-  else
-    {rate=list(c(0,1))}
-  # if reference allele=0, make rate=1
-  if (rate[[1]][2]!=0 & rate[[1]][2]==0)
-    {rate1=1}
-  else
-    {rate1=as.numeric(rate[[1]][1])/(as.numeric(rate[[1]][2])+as.numeric(rate[[1]][1]))}
+      })
   
-  if (rate1>threshold)
-    {mutation_22Q1_filter=rbind(mutation_22Q1_filter, cbind(mutation_22Q1_2[i,],rate1))}
-}
-
-endTime <- Sys.time()
-print(endTime - startTime)
+     return(mutation_22Q1_filter)
+    }
 
 
-mutation_22Q1_filter_0.5_2=mutation_22Q1_filter
+# real function2
+real_parallel2=function(workersnumber,reps,threshold,CGA_WES_AC,RNAseq_AC,mutation_dataset)
+{
+  registerDoMC(workersnumber)
+  iter_2=dim(mutation_dataset)[1]
+        (mutation_22Q1_filter=foreach(chunk=splitIndices(iter_2,workersnumber),.combine=rbind) %dopar%{
+          do.call(rbind,
+          sapply(chunk, function(i){
+            rate=list()
+            # if CGA_WES_AC=-, use RNAseq_AC, or make rate=0
+            if((mutation_dataset[i,CGA_WES_AC]=="")==FALSE)
+            {rate=strsplit(mutation_dataset[i,CGA_WES_AC],":")}
+            else if((mutation_dataset[i,RNAseq_AC]=="")==FALSE)
+            {rate=strsplit(mutation_dataset[i,RNAseq_AC],":")}
+            else
+              {rate=list(c(0,1))}
+            # if reference allele=0, make rate=1
+            if (rate[[1]][2]!=0 & rate[[1]][2]==0)
+              {rate1=1}
+            else
+              {rate1=as.numeric(rate[[1]][1])/(as.numeric(rate[[1]][2])+as.numeric(rate[[1]][1]))}
+            if (rate1>threshold)
+              # {mutation_22Q1_filter=rbind(mutation_22Q1_filter, cbind(mutation_22Q1_2[i,],rate1))}
+            {return(cbind(mutation_dataset[i, c(1,2)],rate1))}   
+            # else{return(NULL)}
+            }
+          ))
+        
+
+      })
+  
+     return(mutation_22Q1_filter)
+    }
+
+
+
+workers_diff=c(16)
+times_diff=dim(mutation_22Q1)[1]
+# times_diff=1000
+threshold1=c(0.9,0.7,0.5,0.3)
+reps=1
+#real
+times_whole=data.frame()
+for (workers in workers_diff){
+    for (threshold in threshold1)
+    {
+      # for (times in times_diff){
+        times_all=system.time(
+          for (j in c(1:reps))
+          {
+              time=list()
+              row_name=paste(workers,times,threshold,sep=",")
+              for(rep in c(1:reps)){     
+                # time[rep]=system.time((assign(paste("mutation_22Q1_filter",threshold,sep="_"),real_parallel1(workers,times,1,threshold))))[[3]]
+                # time[rep]=system.time((assign(paste("mutation_22Q1_filter",threshold,sep="_"),real_parallel2(workers,1,threshold,27,30,mutation_22Q1_2))))[[3]]
+                time[rep]=system.time((assign(paste("mutation_18Q2_filter",threshold,sep="_"),real_parallel2(workers,1,threshold,28,29,mutation_18Q2_2))))[[3]]
+                
+                }
+        new_row=as.data.frame(do.call(cbind,time))
+              
+          })[[3]]
+        new_row=cbind(new_row,times_all)
+        row.names(new_row)=row_name
+        times_whole=rbind(times_whole,new_row)
+    }
+      # }
+  }
+
+
+for(i in threshold1)
+{write.table(get(paste("mutation_22Q1_filter_",i,sep="")),file=here::here("data","cell_mutation","filtered",paste("mutation_22Q1_filter_",i,".txt",sep="")),col.names = F,row.names = F,sep ="\t",quote=F)}
+
+for(i in threshold1)
+{write.table(get(paste("mutation_18Q2_filter_",i,sep="")),file=here::here("data","cell_mutation","filtered",paste("mutation_18Q2_filter_",i,".txt",sep="")),col.names = F,row.names = F,sep ="\t",quote=F)}
+
+
+
+# system.time((mutation_22Q1_filter=real_parallel(workers_diff[1],times_diff[1],1,threshold=threshold1)))
+
+
+# # testing
+# times_whole=data.frame()
+# for (workers in workers_diff){
+#     for (times in times_diff)
+#       {
+#       row_name=paste(workers,times,sep=",")
+#       new_row=as.data.frame(do.call(rbind,testing_parallel(workers,times,reps)))
+#       row.names(new_row)=row_name
+#       times_whole=rbind(times_whole,new_row)
+#       }
+#   }
+
+
 
 
 ```
 
 
-## 1.3 extract top 15%
+## 1.3 extract top 15%, from 22Q1, as new input of mutation genes
 ```{r, error=TRUE}
 
 # extract top 15%
 
-freq_18Q2=as.data.frame(table(mutation_18Q2[,1]))
-freq_18Q2[,1]=as.character(freq_18Q2[,1])
+freq_22Q1=as.data.frame(table(mutation_22Q1_filter_0.3[,1]))
+freq_22Q1[,1]=as.character(freq_22Q1[,1])
+freq_22Q1=dplyr::arrange(freq_22Q1,desc(freq_22Q1[,2]))
+freq_22Q1_15P <- freq_22Q1[1:(dim(freq_22Q1)[1]*0.15),]
 
+
+freq_22Q1_15P[grepl("CACNA1B|BRAF",freq_22Q1_15P[,1],ignore.case = TRUE),]
+
+
+
+freq_22Q1=as.data.frame(freq_22Q1)
+matched_22Q1=freq_22Q1[freq_22Q1[,1] %in% genename_DC_sorted[,1],]
+matched_22Q1_2=freq_22Q1_15P[freq_22Q1_15P[,1] %in% genename_DC_sorted[,1],]
+
+
+# extract top 15%
+
+freq_18Q2=as.data.frame(table(mutation_18Q2_filter_0.3[,1]))
+freq_18Q2[,1]=as.character(freq_18Q2[,1])
 freq_18Q2=dplyr::arrange(freq_18Q2,desc(freq_18Q2[,2]))
 freq_18Q2_15P <- freq_18Q2[1:(dim(freq_18Q2)[1]*0.15),]
+
+
 freq_18Q2_15P[grepl("CACNA1B|BRAF",freq_18Q2_15P[,1],ignore.case = TRUE),]
 
 
 
-freq_22Q1=as.data.frame(table(mutation_22Q1[,1]))
-freq_22Q1[,1]=as.character(freq_22Q1[,1])
+freq_18Q2=as.data.frame(freq_18Q2)
+matched_18Q2=freq_18Q2[freq_18Q2[,1] %in% genename_DC_sorted[,1],]
+matched_18Q2_2=freq_18Q2_15P[freq_18Q2_15P[,1] %in% genename_DC_sorted[,1],]
 
-freq_22Q1=dplyr::arrange(freq_22Q1,desc(freq_22Q1[,2]))
-freq_22Q1_15P <- freq_22Q1[1:(dim(freq_22Q1)[1]*0.15),]
-freq_22Q1_15P[grepl("CACNA1B|BRAF",freq_22Q1_15P[,1],ignore.case = TRUE),]
 
-# somehow, the frequncy of these 2 genes are decreased
 
 ```
+
+
+
+<!-- ## 1.3.old extract top 15% -->
+<!-- ```{r, error=TRUE} -->
+
+<!-- # extract top 15% -->
+
+<!-- freq_18Q2=as.data.frame(table(mutation_18Q2[,1])) -->
+<!-- freq_18Q2[,1]=as.character(freq_18Q2[,1]) -->
+
+<!-- freq_18Q2=dplyr::arrange(freq_18Q2,desc(freq_18Q2[,2])) -->
+<!-- freq_18Q2_15P <- freq_18Q2[1:(dim(freq_18Q2)[1]*0.15),] -->
+<!-- freq_18Q2_15P[grepl("CACNA1B|BRAF",freq_18Q2_15P[,1],ignore.case = TRUE),] -->
+
+
+
+<!-- freq_22Q1=as.data.frame(table(mutation_22Q1[,1])) -->
+<!-- freq_22Q1[,1]=as.character(freq_22Q1[,1]) -->
+
+<!-- freq_22Q1=dplyr::arrange(freq_22Q1,desc(freq_22Q1[,2])) -->
+<!-- freq_22Q1_15P <- freq_22Q1[1:(dim(freq_22Q1)[1]*0.15),] -->
+<!-- freq_22Q1_15P[grepl("CACNA1B|BRAF",freq_22Q1_15P[,1],ignore.case = TRUE),] -->
+
+<!-- # somehow, the frequncy of these 2 genes are decreased -->
+
+<!-- ``` -->
 
 ## 1.4 check common genes to determine threshold(top 15% are not really top 15%)
 ```{r, error=TRUE}
